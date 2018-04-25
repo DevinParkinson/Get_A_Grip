@@ -38,7 +38,7 @@ class Footer extends Component{
               </Grid.Column>
               <Grid.Column mobile={8} tablet={8} computer={5}>
                 <Header as='h3' textAlign='center' style={{color: '#ffffff'}}>
-                Settings...
+                <Link to='/faq' style={{color: '#ffffff'}}>FAQ's</Link>
                 </Header>
                 <Header as='h4' textAlign='center' style={{color: '#ffffff'}}>
                     Terms and Conditions...
@@ -49,6 +49,10 @@ class Footer extends Component{
               </Grid.Column>
             </Grid.Row>
           </Grid>
+        </FooterContainer>
+        <Divider />
+        <FooterContainer>
+          <Header as="h5" textAlign="center" style={{color: '#ffffff'}}>©2016 by Get A Grip Customized Firearms, affiliates Get A Grip Cerakote Works LLC & Get A Grip Stipple Works LLC</Header>
         </FooterContainer>
       </Segment>
     )

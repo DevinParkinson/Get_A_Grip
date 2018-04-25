@@ -8,6 +8,9 @@ import Home from './Home';
 import ProtectedRoute from './ProtectedRoute';
 import AuthRoute from './AuthRoute';
 import Footer from './Footer';
+import Pistols from './Pistols';
+import Checkout from './Checkout';
+import Faq from './Faq';
 import { Segment } from 'semantic-ui-react';
 import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
@@ -22,6 +25,9 @@ class App extends Component {
           <FetchUser>
             <Switch>
               <Route exact path='/' component={Home} />
+              <ProtectedRoute exact path='/pistols' component={Pistols} />
+              <ProtectedRoute exact path='/checkout' component={Checkout} />
+              <Route exact path='/faq' component={Faq} />
               <AuthRoute exact path='/login' component={Login} />
               <AuthRoute exact path='/register' component={Register} />
               <Route component={NoMatch} />

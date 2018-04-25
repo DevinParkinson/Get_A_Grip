@@ -7,10 +7,16 @@ import { Provider } from 'react-redux';
 import store from './store';
 import 'semantic-ui-css/semantic.min.css';
 import { injectGlobal } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
+
+const theme = {
+    fg: 'white',
+    bg: 'black',
+  }
 
 injectGlobal`
   html, body {
-    background-color: black;
+    background-color: linear-gradient(to bottom right, black, silver);
     width: 100%;
     height: 100%;
     color: white;
@@ -20,7 +26,9 @@ injectGlobal`
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')
