@@ -8,9 +8,16 @@ import Home from './Home';
 import ProtectedRoute from './ProtectedRoute';
 import AuthRoute from './AuthRoute';
 import Footer from './Footer';
-import Pistols from './Pistols';
 import Checkout from './Checkout';
 import Faq from './Faq';
+import CustomBuild from './CustomBuild';
+import Defender from './Defender';
+import Cerakote from './Cerakote';
+import Frame from './Frame';
+import Grip from './Grip';
+import Gallery from './Gallery';
+import Operator from './Operator';
+import Slidework from './Slidework';
 import { Segment } from 'semantic-ui-react';
 import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
@@ -25,7 +32,14 @@ class App extends Component {
           <FetchUser>
             <Switch>
               <Route exact path='/' component={Home} />
-              <ProtectedRoute exact path='/pistols' component={Pistols} />
+              <Route exact path='/custom-build-pistols' component={CustomBuild} />
+              <Route exact path='/defender' component={Defender} />
+              <Route exact path='/cerakote' component={Cerakote} />
+              <Route exact path='/gallery' component={Gallery} />
+              <Route exact path='/frame' component={Frame} />
+              <Route exact path='/grip' component={Grip} />
+              <Route exact path='/operator' component={Operator} />
+              <Route exact path='/slidework' component={Slidework} />
               <ProtectedRoute exact path='/checkout' component={Checkout} />
               <Route exact path='/faq' component={Faq} />
               <AuthRoute exact path='/login' component={Login} />
