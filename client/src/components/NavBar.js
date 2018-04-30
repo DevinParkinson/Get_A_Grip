@@ -48,27 +48,6 @@ class NavBar extends Component {
                   <Dropdown.Item>
                     <Dropdown text='Pistols' pointing>
                       <Dropdown.Menu>
-                        <Link to='/slidework'>
-                        <Dropdown.Item text='Slidework' />
-                        </Link>
-                        <Dropdown.Item>
-                          <Dropdown text='Framework' pointing>
-                            <Dropdown.Menu>
-                              <Link to='/operator'>
-                                <Dropdown.Item>Operator</Dropdown.Item>
-                              </Link>
-                              <Link to='/defender'>
-                                <Dropdown.Item>Defender</Dropdown.Item>
-                              </Link>
-                              <Link to='/frame'>
-                                <Dropdown.Item>Frame</Dropdown.Item>
-                              </Link>
-                              <Link to='/grip'>
-                                <Dropdown.Item>Grip</Dropdown.Item>
-                              </Link>
-                            </Dropdown.Menu>
-                          </Dropdown>
-                        </Dropdown.Item>
                         <Link to='/cerakote'>
                           <Dropdown.Item>Cerakote</Dropdown.Item>
                         </Link>
@@ -79,7 +58,7 @@ class NavBar extends Component {
                     </Dropdown>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Dropdown text='Rifles' pointing>
+                    <Dropdown text='Rifles (coming soon)' disabled pointing>
                       <Dropdown.Menu>
                         <Dropdown.Item>
                           Under Construction

@@ -60,8 +60,14 @@ class Faq extends React.Component {
           <Accordion.Content active={activeIndex === 4}>
             <p>We do offer a 10% discount to all active duty military or LEO contact us for details.</p>
           </Accordion.Content>
-        <Header></Header>
-      </Accordion>
+          <Accordion.Title active={activeIndex === 5} index={5} onClick={this.handleClick}>
+          <Icon name='dropdown' />
+          Do you only work with Pistols?
+          </Accordion.Title>
+          <Accordion.Content active={activeIndex === 5}>
+            <p>Pistols is all that we currently work on. However, we soon will be able to work with Precision Rifles as well</p>
+          </Accordion.Content>
+        </Accordion>
       </Segment>
     )
   }
