@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { handleLogout } from '../actions/auth';
 
 const NavContainer = styled.div`
- background: linear-gradient(to bottom right, silver, black, black, black, silver) !important;
+ background: linear-gradient( silver, black, black) !important;
 `
 
 class NavBar extends Component {
