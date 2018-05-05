@@ -9,7 +9,7 @@ import Slides from '../images/Slide.jpg';
 import styled from 'styled-components';
 
 const AppContainer = styled.div`
-  background: linear-gradient(black, black, black, silver) !important;
+  background: linear-gradient(black, black, black, black, silver) !important;
   justify-content: center,
 `
 const GridMain = styled.div`
@@ -158,6 +158,16 @@ class Home extends Component {
         </GridMain>
         <Divider hidden />
         </Container>
+        <Container>
+          <Header as="h1" style={styles.text}>Pricing</Header>
+          <Header as="h3" style={styles.text}>We like to keep it clean cut, affordable, and simple here. Pricing is based on the size of the pistol.</Header>
+          <Header as="h4" style={styles.text}>Full Size Pistol: $225</Header>
+          <Header as="h4" style={styles.text}>Compact Pistol: $200</Header>
+          <Header as="h4" style={styles.text}>Subcompact Pistol: $175</Header>
+          <Header as="h4" style={styles.text}>1 Coat of Cerakote: $20</Header>
+          <Header as="h4" style={styles.text}>And if, for any reason, you need to return it. It is just $20 for the return shipping, which includes insurance.</Header>
+        </Container>
+        <Divider />
       </AppContainer>
     );
   }

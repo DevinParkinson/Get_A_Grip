@@ -1,3 +1,5 @@
 class Pistol < ApplicationRecord
-  belongs_to :user
+  serialize :modifications, Array
+  serialize :textures, Array
+  serialize :cerakote, Array
 end

@@ -7,6 +7,9 @@ class CreatePistols < ActiveRecord::Migration[5.1]
       t.string :gen
       t.string :caliber
       t.float :price
+      t.text :modifications
+      t.text :textures
+      t.text :cerakote
       t.belongs_to :user, foreign_key: true
 
       t.timestamps
