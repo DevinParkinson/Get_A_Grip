@@ -6,4 +6,12 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :pistols
+
+  serialize :my_pistol, Array
+
+  def self.mine(ids)
+    ids = ids.empty? ? [0] : ids
+    Pistol.where("id IN (?)", ids)
+  end
+
 end

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'api/auth'
   namespace :api do
-    resources :pistols, only: [:index]
+    resources :pistols, only: [:index, :update]
+    get 'my_pistol', to: 'pistols#my_pistol'
+    #dlfdsf
   end
 
   #Do not place any routes below this one

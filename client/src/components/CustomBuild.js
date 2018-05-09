@@ -6,7 +6,7 @@ import { setHeaders } from '../actions/headers';
 import { Card } from 'semantic-ui-react';
 
 class CustomBuild extends React.Component {
-  state = { pistols: [], handle: '' }
+  state = { pistols: [] }
 
   componentDidMount = () => {
     const { dispatch } = this.props;
@@ -17,54 +17,51 @@ class CustomBuild extends React.Component {
     })
   }
 
-  filterPistols = () => {
-    const { pistols } = this.state;
-    pistols.map( p =>
-      <Card key={p.id}>
-        <Card.Header>{p.make}</Card.Header>
-        <Card.Content>{p.pistol_model}</Card.Content>
-        <Card.Content>{p.gen}</Card.Content>
-        <Card.Content>{p.price}</Card.Content>
-        <Card.Content>{p.size}</Card.Content>
-        <Card.Content>{p.modifications}</Card.Content>
-        <Card.Content>{p.textures}</Card.Content>
-        <Card.Content>{p.cerakote}</Card.Content>
-      </Card>
-    )
-  }
-
-  categoryPreference = () => {
-    const {pistols}  = this.state;
-    return pistols.map( (h, i) => {
-      return { key: i, text: h, value: h }
+  handleSelect = (id) => {
+    const { dispatch } = this.props;
+    axios.put(`/api/pistols/${id}`)
+      .then( res => {
+        dispatch(setHeaders(res.headers))
+        }).catch( err => {
+      console.log(err)
     })
   }
 
-  handleSelected = (e, {value}) => {
-    let selected = value.toLowerCase();
-    this.props.history.push(`/${selected}`)
-    this.setState({ handle: value });
-    this.visible;
+  categoryPreferences = () => {
+    const { pistols } = this.state;
+    return (
+      <Container>
+        <Header style={styles.text}>Time to Build!</Header>
+        <Header style={styles.text} as='h3'>Select your gun first so we can get your customization started.</Header>
+          <Dropdown
+            placeholder='Choose your pistol'
+            style={styles.dropdown}
+            selection
+            value={this.state.handle}
+            onChange={this.handleSelected}
+            fluid
+            >
+            <Dropdown.Menu>
+              <Dropdown.Header>Make | Model | Gen</Dropdown.Header>
+              {pistols.map( p =>
+              <Dropdown.Item
+                key={p.id}
+                onClick={() => this.handleSelect(p.id)}
+                >{p.make} | {p.pistol_model} | {p.gen}</Dropdown.Item>
+              )}
+            </Dropdown.Menu>
+          </Dropdown>
+      </Container>
+    )
   }
+
 
   render() {
     return (
       <Container>
-        <Header style={styles.text}>
-          Time to build!
+        <Header>
+          {this.categoryPreferences()}
         </Header>
-        <Header style={styles.text}>
-          First, Go ahead and select your pistol, then we can start your customization.
-        </Header>
-        <Dropdown
-          floated='left'
-          placeholder='Choose your pistol'
-          style={styles.dropdown}
-          selection
-          value={this.state.handle}
-          options={this.categoryPreference()}
-          onChange={this.handleSelected}
-        />
       </Container>
     )
   }
@@ -78,7 +75,7 @@ const styles = {
   dropdown: {
     margin: '20px',
     padding: '20px',
-    border: '10px solid #008080',
+    border: '10px solid #bfbfbf',
     height: '2vh',
     width: '25vw',
   },
