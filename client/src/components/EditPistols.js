@@ -1,22 +1,16 @@
-import axios from 'axios'
 import React from 'react';
 import EditPistolForm from './EditPistolForm';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setHeaders } from '../actions/headers';
+import { getPistols } from '../actions/pistols';
 import { Segment, Card, Header, Button, Divider } from 'semantic-ui-react';
 
 class EditPistols extends React.Component {
-  state = { category: '', showForm: false, pistols: [] };
+  state = { category: '', showForm: false };
 
-  componentDidMount = () => {
-    const { dispatch } = this.props;
-    axios.get('/api/pistols')
-      .then( res => {
-        dispatch(setHeaders(res.headers))
-        this.setState({ pistols: res.data })
-    })
+  componentDidMount() {
+    this.props.dispatch( getPistols() )
   }
 
   toggleForm = () => {
@@ -26,7 +20,7 @@ class EditPistols extends React.Component {
   }
 
   pistolsList = () => {
-    const { pistols } = this.state
+    const { pistols } = this.props
     return (pistols.map( p =>
       <Card key={ p.id } as={ Transparent } >
         <Card.Content>

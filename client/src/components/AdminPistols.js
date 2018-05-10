@@ -1,5 +1,4 @@
-import React from 'react'
-import styled from 'styled-components';
+import React from 'react';
 import { connect } from 'react-redux';
 import {
   Button,
@@ -12,7 +11,7 @@ import { deletePistol } from '../actions/pistols';
 
 
 class AdminPistols extends React.Component {
-  state = { showForm: false, pistols: [] }
+  state = { showForm: false }
 
   toggleForm = () => {
     this.setState( state => {
@@ -21,7 +20,6 @@ class AdminPistols extends React.Component {
   }
 
   removeItem = () => {
-
     const { pistol: { id }, dispatch, history } = this.props
     dispatch( deletePistol( id ) )
     history.push( '/edit' )
@@ -32,24 +30,24 @@ class AdminPistols extends React.Component {
     const { showForm } = this.state
     return (
       <Container>
-        <Link to="/edit">Back to Pistols</Link>
+        <Link to="/edit">Back To Pistols</Link>
 
         { showForm ?
           <EditPistolForm { ...pistol } closeForm={ this.toggleForm } />
           :
           <div>
-            < Card key={ pistol.id } as={ Transparent } >
-              <Card.Content style={ styles.text }>
-                <Card.Header as="h3" style={styles.text}>
+            <Card key={ pistol.id } >
+              <Card.Content>
+                <Card.Header as="h3">
                   { pistol.make }
                 </Card.Header>
-                <Card.Header as="h3" style={styles.text}>
+                <Card.Header as="h3">
                   { pistol.pistol_model }
                 </Card.Header>
-                <Card.Meta style={styles.text}>
+                <Card.Meta>
                   { pistol.gen }
                 </Card.Meta>
-                <Card.Description style={styles.text}>
+                <Card.Description>
                   ${ pistol.price }
                 </Card.Description>
                 <Card.Description>
@@ -74,7 +72,7 @@ class AdminPistols extends React.Component {
         <Button color='blue' onClick={ this.toggleForm }>
           { showForm ? 'Cancel' : 'Edit' }
         </Button>
-        <Button color='red' onClick={ this.removeItem }>
+        <Button color='red' onClick={ this.removePistol }>
           Delete
         </Button>
       </Container>
@@ -82,16 +80,6 @@ class AdminPistols extends React.Component {
   }
 }
 
-
-const Transparent = styled.div`
-  background: transparent !important;
-`
-
-var styles = {
-  text: {
-    color: 'white'
-  }
-}
 
 const mapStateToProps = ( state, props ) => {
   const pistol = state.pistols.find(

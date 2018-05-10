@@ -1,15 +1,15 @@
-import { PISTOLS, ADD_PISTOL, UPDATE_PISTOL, DELETE_PISTOL } from '../actions/pistols'
+import { PISTOLS, ADD_PISTOLS, UPDATE_PISTOL, DELETE_PISTOL } from '../actions/pistols'
 
 const pistols = ( state = [], action ) => {
   switch ( action.type ) {
     case PISTOLS:
-      return action.items;
-    case ADD_PISTOL:
-      return [action.item, ...state]
+      return action.pistols;
+    case ADD_PISTOLS:
+      return [action.pistols, ...state]
     case UPDATE_PISTOL:
       return state.map( i => {
-        if ( i.id === action.item.id )
-          return action.item
+        if ( i.id === action.pistol.id )
+          return action.pistol
         return i
       } )
     case DELETE_PISTOL:

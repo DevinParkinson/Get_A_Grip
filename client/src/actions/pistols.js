@@ -7,17 +7,17 @@ export const DELETE_PISTOL = 'DELETE_PISTOL'
 export const getPistols = (cb) => {
   return (dispatch) => {
     axios.get('/api/pistols')
-      .then( res => dispatch({ type: PISTOLS, pistols: res.data } ))
+      .then( res => dispatch({ type: PISTOLS, pistols: res.data, headers: res.headers } ))
       .then(cb)
       }
   }
 
-export const addPistols = (pistols) => {
-  return (dispatch) => {
-    axios.post('/api/pistols', { pistols } )
-    .then ( res => dispatch )
+  export const addPistols = ( pistol ) => {
+    return ( dispatch ) => {
+      axios.post( '/api/pistols', { pistol } )
+        .then( res => dispatch( { type: ADD_PISTOLS, pistol: res.data, headers: res.headers } ) )
+    }
   }
-}
 
 export const updatePistol = (pistol) => {
   return (dispatch) => {
