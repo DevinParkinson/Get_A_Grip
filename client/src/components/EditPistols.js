@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setHeaders } from '../actions/headers';
-import { Segment, Card, Header, Button, Divider, Image } from 'semantic-ui-react';
+import { Segment, Card, Header, Button, Divider } from 'semantic-ui-react';
 
 class EditPistols extends React.Component {
   state = { category: '', showForm: false, pistols: [] };
@@ -27,40 +27,49 @@ class EditPistols extends React.Component {
 
   pistolsList = () => {
     const { pistols } = this.state
-    return { pistols.map( p =>
+    return (pistols.map( p =>
       <Card key={ p.id } as={ Transparent } >
-        <Card.Content style={ styles.text }>
+        <Card.Content>
+          <Card.Header as="h3">
+            { p.make }
+          </Card.Header>
           <Card.Header as="h3">
             { p.model }
           </Card.Header>
           <Card.Meta>
-            ${ p.pistol_model }
+            { p.pistol_model }
           </Card.Meta>
           <Card.Meta>
-            ${ p.gen }
+            { p.gen }
           </Card.Meta>
           <Card.Description>
-            { p.price }
+            ${ p.price }
           </Card.Description>
           <Card.Description>
             { p.caliber }
           </Card.Description>
           <Card.Description>
-            { p.modifications }
+            Available Modifications: { p.modifications }
           </Card.Description>
+          <Divider />
           <Card.Description>
             { p.textures }
           </Card.Description>
+          <Divider />
           <Card.Description>
             { p.cerakote }
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Link to={ `/edit/${ p.id }` }>View Pistol</Link>
+          <Link to={ `/edit/${ p.id }` }>
+          <Button color='blue'>
+          View Pistol
+          </Button>
+          </Link>
         </Card.Content>
       </Card >
       )
-    }
+    )
   }
 
   render() {
@@ -71,14 +80,19 @@ class EditPistols extends React.Component {
           Menu
         </Header>
         <Button onClick={ this.toggleForm }>
-          { showForm ? "Hide Form" : "Show Form" }
+          { showForm ? "Show Pistols" : "Create Pistol" }
         </Button>
         { showForm ?
           <EditPistolForm closeForm={ this.toggleForm } />
           :
           <div>
             <Divider />
-            <Card.Group>
+            <Card.Group
+            computer={8}
+            mobile={2}
+            tablet={4}
+            centered
+            >
               { this.pistolsList() }
             </Card.Group>
           </div>

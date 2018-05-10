@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addPistols, updatePistol } from '../actions/pistols';
-import { Form, Grid } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 
 class EditPistolForm extends React.Component {
 

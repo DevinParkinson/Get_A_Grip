@@ -12,7 +12,7 @@ const NavContainer = styled.div`
 
 class NavBar extends Component {
   rightNavs = () => {
-    const { role, user, dispatch, history } = this.props;
+    const { user, dispatch, history } = this.props;
 
     if (user.id) {
       return (

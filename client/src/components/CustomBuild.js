@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import { Container, Header, Dropdown } from 'semantic-ui-react';
 import axios from 'axios';
 import { setHeaders } from '../actions/headers';
-import { Card } from 'semantic-ui-react';
 
 class CustomBuild extends React.Component {
   state = { pistols: [], my_pistol: [] }
@@ -14,7 +13,13 @@ class CustomBuild extends React.Component {
       .then( res => {
         dispatch(setHeaders(res.headers))
         this.setState({ pistols: res.data })
-    })
+    }).then(
+      axios.get('/api/my_pistol')
+        .then( res => {
+          dispatch(setHeaders(res.headers))
+          this.setState({ my_pistol: res.data })
+        })
+      )
   }
 
   handleSelect = (id) => {
@@ -22,14 +27,8 @@ class CustomBuild extends React.Component {
     axios.put(`/api/pistols/${id}`)
       .then( res => {
         dispatch(setHeaders(res.headers))
-      }).then(
-        axios.get('/api/my_pistol')
-          .then( res => {
-            dispatch(setHeaders(res.headers))
-            this.setState({ my_pistol: res.data })
-          })
-      )
-    }
+      })
+  }
 
   categoryPreferences = () => {
     const { pistols } = this.state;
