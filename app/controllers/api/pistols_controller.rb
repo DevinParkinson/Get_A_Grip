@@ -11,15 +11,31 @@ class Api::PistolsController < ApplicationController
     current_user.save
   end
 
+  def create
+    item = Pistol.create(pistol_params)
+    if pistol.save
+      render json: pistol
+    else
+      render json: { errors: pistol.errors.full_messages.join(',') }, status: 422
+    end
+  end
+
   def update
-    binding.pry
     current_user.my_pistol << params[:id].to_i
     current_user.save
     render json: current_user
   end
 
+  def update_pistol
+    if @pistol.update(pistol_params)
+      render json: @pistol
+    else
+      render json: { errors: @pistol.errors.full_messages.join(',') }, status: 422
+    end
+  end
+
   def delete
-    current_user.my_pistol.delete_if{|i| i == @product.id}
+    current_user.my_pistol.delete_if{|i| i == @pistol.id}
     current_user.save
     render json: current_user
   end
@@ -29,4 +45,9 @@ class Api::PistolsController < ApplicationController
   def set_pistol
     @pistol = Pistol.find(params[:id])
   end
+
+  def pistol_params
+    params.require(:pistol).permit(:make, :pistol_model, :gen, :price, :caliber, :size, :modifications, :textures, :cerakote)
+  end
+
 end

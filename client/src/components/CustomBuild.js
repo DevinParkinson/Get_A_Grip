@@ -6,7 +6,7 @@ import { setHeaders } from '../actions/headers';
 import { Card } from 'semantic-ui-react';
 
 class CustomBuild extends React.Component {
-  state = { pistols: [] }
+  state = { pistols: [], my_pistol: [] }
 
   componentDidMount = () => {
     const { dispatch } = this.props;
@@ -22,10 +22,14 @@ class CustomBuild extends React.Component {
     axios.put(`/api/pistols/${id}`)
       .then( res => {
         dispatch(setHeaders(res.headers))
-        }).catch( err => {
-      console.log(err)
-    })
-  }
+      }).then(
+        axios.get('/api/my_pistol')
+          .then( res => {
+            dispatch(setHeaders(res.headers))
+            this.setState({ my_pistol: res.data })
+          })
+      )
+    }
 
   categoryPreferences = () => {
     const { pistols } = this.state;
@@ -34,6 +38,7 @@ class CustomBuild extends React.Component {
         <Header style={styles.text}>Time to Build!</Header>
         <Header style={styles.text} as='h3'>Select your gun first so we can get your customization started.</Header>
           <Dropdown
+            position='center'
             placeholder='Choose your pistol'
             style={styles.dropdown}
             selection
@@ -42,12 +47,12 @@ class CustomBuild extends React.Component {
             fluid
             >
             <Dropdown.Menu>
-              <Dropdown.Header>Make | Model | Gen</Dropdown.Header>
+              <Dropdown.Header> Make  |  Model  |  Gen</Dropdown.Header>
               {pistols.map( p =>
               <Dropdown.Item
                 key={p.id}
                 onClick={() => this.handleSelect(p.id)}
-                >{p.make} | {p.pistol_model} | {p.gen}</Dropdown.Item>
+                >{p.make} | {p.pistol_model} | {p.gen} </Dropdown.Item>
               )}
             </Dropdown.Menu>
           </Dropdown>
@@ -75,9 +80,9 @@ const styles = {
   dropdown: {
     margin: '20px',
     padding: '20px',
-    border: '10px solid #bfbfbf',
-    height: '2vh',
-    width: '25vw',
+    border: '5px solid #bfbfbf',
+    height: '4vh',
+    width: 'fill',
   },
 }
 

@@ -12,11 +12,14 @@ const NavContainer = styled.div`
 
 class NavBar extends Component {
   rightNavs = () => {
-    const { user, dispatch, history } = this.props;
+    const { role, user, dispatch, history } = this.props;
 
     if (user.id) {
       return (
         <Menu.Menu position='right'>
+          { user.role === 'admin' &&
+            <Menu.Item onClick={ () => history.push( '/edit' ) } style={styles.text}>Edit Menu</Menu.Item>
+          }
           <Menu.Item
             style={styles.text}
             name='Logout'
