@@ -1,6 +1,6 @@
 class Api::PistolsController < ApplicationController
   before_action :authenticate_user!, only: [:my_pistol, :update, :delete]
-  before_action :set_pistol, only: [:update, :delete]
+  before_action :set_pistol, only: [:update, :destroy]
 
   def index
     render json: Pistol.all
@@ -34,7 +34,7 @@ class Api::PistolsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     current_user.my_pistol.delete_if{|i| i == @pistol.id}
     current_user.save
     render json: current_user

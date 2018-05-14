@@ -788,7 +788,8 @@ end
 1.times do
   User.create(
     email: "test@test.com",
-    password: "password"
+    password: "password",
+    role: "admin"
   )
 end
 

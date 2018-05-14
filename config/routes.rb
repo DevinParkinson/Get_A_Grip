@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   namespace :api do
     resources :pistols
     get 'my_pistol', to: 'pistols#my_pistol'
-    #dlfdsf
   end
 
   #Do not place any routes below this one
