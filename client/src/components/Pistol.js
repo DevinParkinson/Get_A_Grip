@@ -1,11 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Container, Header, Dropdown, List, Button } from 'semantic-ui-react';
+import { Container, Header, Dropdown } from 'semantic-ui-react';
 import axios from 'axios';
-import {updateUser} from '../actions/auth';
+import { Redirect } from 'react-router'
+import {Link} from 'react-router-dom';
 import { setHeaders } from '../actions/headers';
 
-class CustomBuild extends React.Component {
+class Pistol extends React.Component {
   state = { pistols: [], my_pistol: [] }
 
   componentDidMount = () => {
@@ -28,22 +29,18 @@ class CustomBuild extends React.Component {
     axios.put(`/api/pistols/${id}`)
       .then( res => {
         dispatch(setHeaders(res.headers))
-        dispatch( updateUser())
       })
   }
 
-  handleRemove = (id) => {
-    const { dispatch } = this.props;
-    axios.delete(`/api/pistols/${id}`)
-      .then( res => {
-        dispatch(setHeaders(res.headers))
-        dispatch( updateUser())
-      })
+  redirectMe = () => {
+    if (this.state.redirect) {
+      return (<Redirect to="/customize-pistol" />)
+    }
   }
 
   categoryPreferences = () => {
     const { pistols, my_pistol } = this.state;
-      if (my_pistol === 0)
+      if (my_pistol.length === 0)
     return (
       <Container>
         <Header style={styles.text}>Time to Build!</Header>
@@ -63,30 +60,18 @@ class CustomBuild extends React.Component {
               <Dropdown.Item
                 key={p.id}
                 onClick={() => this.handleSelect(p.id)}
-                >{p.make} | {p.pistol_model} | {p.gen} </Dropdown.Item>
+                ><Link to={`/customize-pistol`}>{p.make} | {p.pistol_model} | {p.gen}</Link></Dropdown.Item>
               )}
             </Dropdown.Menu>
           </Dropdown>
+          {this.redirectMe()}
       </Container>
     )
-      return (
-            my_pistol.map( p =>
-              <Container>
-              <Header key={p.id} style={styles.text}>
-                The Gun that you have chosen is: {p.make} | {p.pistol_model} | {p.gen}
-            </Header>
-            <Header as="h5" style={styles.text}>Click the button below if you clicked on the wrong gun.</Header>
-            <Button
-              onClick={() => this.handleRemove(p.id)}
-              centered
-              >
-              Remove
-            </Button>
-            <Header style={styles.text}>Here is a list of the available modifications</Header>
-            <ul style={styles.text}>{p.modifications}</ul>
+        return (
+          <Container>
+            <Header as="h1" style={styles.text}>You have already selected a pistol. <Link to="/customize-pistol">Click Here</Link> to see your pistol and start customizing.</Header>
           </Container>
-          )
-      )
+        )
   }
 
 
@@ -123,4 +108,4 @@ const mapStateToProps = (state, props) => {
   }
 }
 
-export default connect(mapStateToProps)(CustomBuild);
+export default connect(mapStateToProps)(Pistol);

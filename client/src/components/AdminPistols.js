@@ -19,7 +19,7 @@ class AdminPistols extends React.Component {
     } )
   }
 
-  removeItem = () => {
+  removePistol = () => {
     const { pistol: { id }, dispatch, history } = this.props
     dispatch( deletePistol( id ) )
     history.push( '/edit' )
@@ -83,7 +83,7 @@ class AdminPistols extends React.Component {
 
 const mapStateToProps = ( state, props ) => {
   const pistol = state.pistols.find(
-    i => i.id === parseInt( props.match.params.id ),
+    i => i.id === parseInt( props.match.params.id, 10 ),
   );
   return { pistol };
 };

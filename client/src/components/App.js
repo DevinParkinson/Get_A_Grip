@@ -12,9 +12,10 @@ import Checkout from './Checkout';
 import EditPistols from './EditPistols';
 import AdminPistols from './AdminPistols';
 import Faq from './Faq';
-import CustomBuild from './CustomBuild';
+import Pistol from './Pistol';
 import Gallery from './Gallery';
 import { Segment } from 'semantic-ui-react';
+import CustomizePistol from './CustomizePistol';
 import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
 
@@ -28,7 +29,8 @@ class App extends Component {
           <FetchUser>
             <Switch>
               <Route exact path='/' component={Home} />
-              <ProtectedRoute exact path='/custom-build-pistols' component={CustomBuild} />
+              <ProtectedRoute exact path='/pistol' component={Pistol} />
+              <ProtectedRoute exact path='/customize-pistol' component={CustomizePistol} />
               <ProtectedRoute exact path='/edit' component={EditPistols} />
               <ProtectedRoute exact path='/edit/:id' component={AdminPistols} />
               <Route exact path='/gallery' component={Gallery} />

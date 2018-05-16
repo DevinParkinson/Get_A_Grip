@@ -51,11 +51,11 @@ class NavBar extends Component {
                   <Dropdown.Item>
                     <Dropdown text='Pistols' pointing>
                       <Dropdown.Menu>
-                        <Link to='/cerakote'>
-                          <Dropdown.Item>Cerakote</Dropdown.Item>
+                        <Link to='/pistol'>
+                          <Dropdown.Item>Choose Your Pistol</Dropdown.Item>
                         </Link>
-                        <Link to='/custom-build-pistols'>
-                          <Dropdown.Item>Build Your Own</Dropdown.Item>
+                        <Link to='/customize-pistol'>
+                          <Dropdown.Item>Customize Your Pistol</Dropdown.Item>
                         </Link>
                       </Dropdown.Menu>
                     </Dropdown>
