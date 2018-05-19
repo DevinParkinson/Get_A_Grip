@@ -25,6 +25,12 @@ class AdminPistols extends React.Component {
     history.push( '/edit' )
   }
 
+  renderMods(pistol) {
+    if(pistol.modifications) {
+      return pistol.modifications.map(mod => (<div>{mod}</div>))
+    }
+  }
+
   render() {
     const { pistol = {} } = this.props
     const { showForm } = this.state
@@ -57,7 +63,7 @@ class AdminPistols extends React.Component {
                   { pistol.caliber }
                 </Card.Description>
                 <Card.Description>
-                  { pistol.modifications }
+                  { this.renderMods(pistol) }
                 </Card.Description>
                 <Card.Description>
                   { pistol.textures }

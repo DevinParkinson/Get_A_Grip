@@ -23,6 +23,14 @@ class EditPistolForm extends React.Component {
 
   }
 
+  handleMultiChange = (name, index) => (e) => {
+      const newMulti = this.state[name].map( ( value, i ) => {
+        if (index !== i) return value
+        return e.target.value
+      })
+      this.setState({ [name]: newMulti})
+  }
+
   handleSubmit = ( e ) => {
     e.preventDefault()
     const pistol = { ...this.state }
@@ -30,6 +38,20 @@ class EditPistolForm extends React.Component {
     const func = this.props.id ? updatePistol : addPistols
     dispatch( func( pistol ) )
     closeForm()
+  }
+
+  renderMultiInputs(values, name) {
+    return values.map((value, index) => {
+      return (
+        <Form.Input
+          key = { index }
+          name={name + "[]"}
+          value={ this.state[name][index] }
+          onChange={ this.handleMultiChange(name, index) }
+          label="Modifications"
+        />
+      )
+    })
   }
 
   render() {
@@ -77,12 +99,7 @@ class EditPistolForm extends React.Component {
           onChange={ this.handleChange }
           label="Caliber"
         />
-        <Form.Input
-          name="modifications"
-          defaultValue={ modifications }
-          onChange={ this.handleChange }
-          label="Modifications"
-        />
+      { this.renderMultiInputs(modifications, "modifications") }
         <Form.Input
           name="textures"
           defaultValue={ textures }

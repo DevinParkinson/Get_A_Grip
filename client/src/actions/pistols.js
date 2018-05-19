@@ -21,8 +21,8 @@ export const getPistols = (cb) => {
 
 export const updatePistol = (pistol) => {
   return (dispatch) => {
-    axios.put(`/api/pistols/${pistol.id}`, { pistol } )
-      .then ( res => dispatch({ type: UPDATE_PISTOL, pistol: res.data }))
+    axios.put(`/api/pistol/${pistol.id}`, { pistol } )
+      .then ( res => dispatch({ type: UPDATE_PISTOL, pistol: res.data, headers: res.headers }))
   }
 }
 

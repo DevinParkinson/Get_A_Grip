@@ -1,6 +1,6 @@
 class Api::PistolsController < ApplicationController
   before_action :authenticate_user!, only: [:my_pistol, :update, :delete]
-  before_action :set_pistol, only: [:update, :destroy]
+  before_action :set_pistol, only: [:update, :destroy, :update_pistol]
 
   def index
     render json: Pistol.all
@@ -47,7 +47,7 @@ class Api::PistolsController < ApplicationController
   end
 
   def pistol_params
-    params.require(:pistol).permit(:make, :pistol_model, :gen, :price, :caliber, :size, :modifications, :textures, :cerakote)
+    params.require(:pistol).permit(:make, :pistol_model, :gen, :price, :caliber, :size, :modifications => [], :textures => [], :cerakote => [])
   end
 
 end

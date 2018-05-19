@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :pistols
     get 'my_pistol', to: 'pistols#my_pistol'
+    put 'pistol/:id', to: 'pistols#update_pistol'
   end
 
   #Do not place any routes below this one
