@@ -31,6 +31,18 @@ class AdminPistols extends React.Component {
     }
   }
 
+  renderTextures(pistol) {
+    if(pistol.textures) {
+      return pistol.textures.map(mod => (<div>{mod}</div>))
+    }
+  }
+
+  renderCerakote(pistol) {
+    if(pistol.cerakote) {
+      return pistol.cerakote.map(mod => (<div>{mod}</div>))
+    }
+  }
+
   render() {
     const { pistol = {} } = this.props
     const { showForm } = this.state
@@ -63,13 +75,16 @@ class AdminPistols extends React.Component {
                   { pistol.caliber }
                 </Card.Description>
                 <Card.Description>
+                  Modifications:
                   { this.renderMods(pistol) }
                 </Card.Description>
                 <Card.Description>
-                  { pistol.textures }
+                  Textures:
+                  { this.renderTextures(pistol) }
                 </Card.Description>
                 <Card.Description>
-                  { pistol.cerakote }
+                  Cerakote:
+                  { this.renderCerakote(pistol) }
                 </Card.Description>
               </Card.Content>
             </Card >

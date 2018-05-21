@@ -33,6 +33,23 @@ class CustomizePistol extends React.Component {
     }
   }
 
+  renderMods(p) {
+    if(p.modifications) {
+      return p.modifications.map(mod => (<div>{mod}</div>))
+    }
+  }
+
+  renderTextures(pistol) {
+    if(pistol.textures) {
+      return pistol.textures.map(mod => (<div>{mod}</div>))
+    }
+  }
+
+  renderCerakote(pistol) {
+    if(pistol.cerakote) {
+      return pistol.cerakote.map(mod => (<div>{mod}</div>))
+    }
+  }
 
   render() {
     const { my_pistol } = this.state;
@@ -57,8 +74,12 @@ class CustomizePistol extends React.Component {
               >
               Remove
             </Button>
-            <Header style={styles.text}>Here is a list of the available modifications</Header>
-            <ul style={styles.text}>{p.modifications}</ul>
+            <Header style={styles.texts}>Modifications:</Header>
+            <ul style={styles.texts}>{ this.renderMods(p)}</ul>
+            <Header style={styles.texts}>Textures:</Header>
+            <ul style={styles.texts}>{ this.renderTextures(p)}</ul>
+            <Header style={styles.texts}>Cerakote:</Header>
+            <ul style={styles.texts}>{ this.renderCerakote(p)}</ul>
             {this.redirectMe()}
           </Container>
           )
@@ -70,6 +91,11 @@ const styles = {
   text: {
     color: "white",
     textAlign: "center",
+  },
+  texts: {
+    color: "white",
+    textAlign: "left",
+
   }
 }
 

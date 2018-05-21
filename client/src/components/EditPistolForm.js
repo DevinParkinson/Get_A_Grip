@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addPistols, updatePistol } from '../actions/pistols';
-import { Form } from 'semantic-ui-react';
+import { Form, Header } from 'semantic-ui-react';
 
 class EditPistolForm extends React.Component {
 
@@ -48,7 +48,6 @@ class EditPistolForm extends React.Component {
           name={name + "[]"}
           value={ this.state[name][index] }
           onChange={ this.handleMultiChange(name, index) }
-          label="Modifications"
         />
       )
     })
@@ -59,62 +58,62 @@ class EditPistolForm extends React.Component {
 
     return (
       <Form onSubmit={ this.handleSubmit }>
+        <Header as="h4" style={styles.text}>Make</Header>
         <Form.Input
           name="make"
           defaultValue= {make}
           required
           onChange={ this.handleChange }
-          label="Make"
         />
+        <Header as="h4" style={styles.text}>Model</Header>
         <Form.Input
           name="pistol_model"
           required
           defaultValue={ pistol_model }
           onChange={ this.handleChange }
-          label="Model"
         />
+        <Header as="h4" style={styles.text}>Gen</Header>
         <Form.Input
           name="gen"
           defaultValue={ gen }
           onChange={ this.handleChange }
-          label="Gen"
         />
+      <Header as="h4" style={styles.text}>Price</Header>
         <Form.Input
           name="price"
           defaultValue={ price }
           type="number"
           min="0"
           onChange={ this.handleChange }
-          label="Price"
         />
+        <Header as="h4" style={styles.text}>Size</Header>
         <Form.Input
           name="size"
           defaultValue={ size }
           onChange={ this.handleChange }
-          label="Size"
         />
+        <Header as="h4" style={styles.text}>Caliber</Header>
         <Form.Input
           name="caliber"
           defaultValue={ caliber }
           onChange={ this.handleChange }
-          label="Caliber"
         />
+      <Header as="h4" style={styles.text}>Modifications</Header>
       { this.renderMultiInputs(modifications, "modifications") }
-        <Form.Input
-          name="textures"
-          defaultValue={ textures }
-          onChange={ this.handleChange }
-          label="Textures"
-        />
-        <Form.Input
-          name="cerakote"
-          defaultValue={ cerakote }
-          onChange={ this.handleChange }
-          label="Cerakote"
-        />
+        <Header as="h4" style={styles.text}>Textures</Header>
+      { this.renderMultiInputs(textures, "textures")}
+        <Header as="h4" style={styles.text}>Cerakote</Header>
+      { this.renderMultiInputs(cerakote, "cerakote")}
         <Form.Button>Save</Form.Button>
       </Form>
     )
+  }
+}
+
+const styles = {
+  text: {
+    color: "white",
+    textAlign: "center",
   }
 }
 
