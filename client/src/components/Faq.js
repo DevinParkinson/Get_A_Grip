@@ -18,7 +18,7 @@ class Faq extends React.Component {
     return (
       <Segment inverted>
         <Header as="h1" style={styles.text}>
-          Faq about Get-A-Grip
+          Frequently Asked Questions About Kings Peak Customs
         </Header>
         <Accordion inverted>
           <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
@@ -65,7 +65,19 @@ class Faq extends React.Component {
           Do you only work with Pistols?
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 5}>
-            <p>Pistols is all that we currently work on. However, we soon will be able to work with Precision Rifles as well</p>
+            <p>Pistols is all that we currently work on. However, we are currently working to be able to customize Precision Rifles as well</p>
+          </Accordion.Content>
+          <Accordion.Title active={activeIndex === 6} index={6} onClick={this.handleClick}>
+          <Icon name='dropdown' />
+          What are your prices?
+          </Accordion.Title>
+          <Accordion.Content active={activeIndex === 6}>
+            <p>Pricing depends on the size of the pistol, you can make as many or as little changes as you want without worrying about the price.*</p>
+            <p>Full Size Pistol: $225</p>
+            <p>Compact Pistol: $200</p>
+            <p>Subcompact Pistol: $175</p>
+            <p>Return shipping for any reason would just be a flat rate of $20. Which includes insurance.</p>
+            <p>*Additional layer of cerakote is an additional $20</p>
           </Accordion.Content>
         </Accordion>
       </Segment>

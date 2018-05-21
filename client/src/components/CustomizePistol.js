@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Redirect } from 'react-router'
-import { Container, Header, Button } from 'semantic-ui-react';
+import { Container, Header, Button, Checkbox, Form, Divider, Grid } from 'semantic-ui-react';
 import {connect} from 'react-redux'
 import { setHeaders } from '../actions/headers';
 
@@ -35,19 +35,19 @@ class CustomizePistol extends React.Component {
 
   renderMods(p) {
     if(p.modifications) {
-      return p.modifications.map(mod => (<div>{mod}</div>))
+      return p.modifications.map(mod => (<div><Checkbox label={<label style={styles.texts}>{mod}</label>} /></div>))
     }
   }
 
   renderTextures(pistol) {
     if(pistol.textures) {
-      return pistol.textures.map(mod => (<div>{mod}</div>))
+      return pistol.textures.map(mod => (<div><Checkbox label={<label style={styles.texts}>{mod}</label>} /></div>))
     }
   }
 
   renderCerakote(pistol) {
     if(pistol.cerakote) {
-      return pistol.cerakote.map(mod => (<div>{mod}</div>))
+      return pistol.cerakote.map(mod => (<div><Checkbox label={<label style={styles.texts}>{mod}</label>} /></div>))
     }
   }
 
@@ -62,28 +62,31 @@ class CustomizePistol extends React.Component {
       </Container>
     )
       return (
-            my_pistol.map( p =>
-              <Container>
-              <Header key={p.id} style={styles.text}>
-                The Gun that you have chosen is: {p.make} | {p.pistol_model} | {p.gen}
-            </Header>
-            <Header as="h5" style={styles.text}>Click the button below if you clicked on the wrong gun.</Header>
-            <Button
-              onClick={() => this.handleRemove(p.id)}
-              centered
-              >
-              Remove
-            </Button>
-            <Header style={styles.texts}>Modifications:</Header>
-            <ul style={styles.texts}>{ this.renderMods(p)}</ul>
-            <Header style={styles.texts}>Textures:</Header>
-            <ul style={styles.texts}>{ this.renderTextures(p)}</ul>
-            <Header style={styles.texts}>Cerakote:</Header>
-            <ul style={styles.texts}>{ this.renderCerakote(p)}</ul>
-            {this.redirectMe()}
+        my_pistol.map( p =>
+        <Grid columns={3}>
+            <Container fluid>
+              <Header as="h2" key={p.id} style={styles.text}>
+                  The Gun that you have chosen is: {p.make} | {p.pistol_model} | {p.gen}
+              </Header>
+              <Header as="h5" style={styles.texts}>Modifications:</Header>
+                <Form.Field style={styles.texts}>{ this.renderMods(p)}</Form.Field>
+              <Header as="h5" style={styles.texts}>Textures:</Header>
+                <Form.Field style={styles.texts}>{ this.renderTextures(p)}</Form.Field>
+              <Header as="h5" style={styles.texts}>Cerakote:</Header>
+                <Form.Field style={styles.texts}>{ this.renderCerakote(p)}</Form.Field>
+              <Header as="h5" style={styles.texts}>Click the button below if you clicked on the wrong gun.</Header>
+              <Button
+                size='tiny'
+                onClick={() => this.handleRemove(p.id)}
+                >
+                Remove
+              </Button>
+              <Divider />
           </Container>
-          )
+        {this.redirectMe()}
+        </Grid>
         )
+      )
   }
 }
 

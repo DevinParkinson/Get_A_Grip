@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Divider, Dropdown } from 'semantic-ui-react';
+import { Menu, Divider, Dropdown, Image } from 'semantic-ui-react';
 import Logo from '../images/Logo.jpg';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -8,6 +8,12 @@ import { handleLogout } from '../actions/auth';
 
 const NavContainer = styled.div`
  background: linear-gradient( silver, black, black) !important;
+ display: block
+`
+
+const LogoImage = styled(Image)`
+  height: 8vh;
+  float: center
 `
 
 class NavBar extends Component {
@@ -78,10 +84,10 @@ class NavBar extends Component {
               </Dropdown>
             </Menu.Item>
           </Menu.Menu>
-          <Menu.Menu position='center'>
+          <Menu.Menu>
             <Menu.Item>
               <a href='/'>
-                <img src={Logo} alt="Logo" />
+                <LogoImage src={Logo} alt="Logo" />
               </a>
             </Menu.Item>
           </Menu.Menu>
