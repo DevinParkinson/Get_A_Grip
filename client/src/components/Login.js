@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import { Header, Segment, Form, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { handleLogin } from '../actions/auth';
+import styled from 'styled-components';
+
+const AppContainer = styled.div`
+  justify-content: center;
+  background-image: url("http://www.copiaguechamber.org/wp-content/uploads/2017/09/background-dark-metal.jpg");
+  background-attachment: fixed;
+  width: 100%;
+`
 
 class Login extends Component {
   state = { email: '', password: '' };
@@ -21,7 +29,7 @@ class Login extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <Segment basic>
+      <AppContainer basic>
         <Header as='h1' textAlign='center'>Login</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
@@ -49,7 +57,7 @@ class Login extends Component {
             <Button primary type='submit'>Submit</Button>
           </Segment>
         </Form>
-      </Segment>
+      </AppContainer>
     );
   }
 }

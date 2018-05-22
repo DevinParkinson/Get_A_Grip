@@ -9,8 +9,10 @@ import Slides from '../images/Slide.jpg';
 import styled from 'styled-components';
 
 const AppContainer = styled.div`
-  background: linear-gradient(black, black, black, black, silver) !important;
-  justify-content: center,
+  justify-content: center;
+  background-image: url("http://www.copiaguechamber.org/wp-content/uploads/2017/09/background-dark-metal.jpg");
+  background-attachment: fixed;
+  width: 100%;
 `
 const GridMain = styled.div`
   width: 100%
@@ -39,13 +41,13 @@ class Home extends Component {
     const { active1, active2, active3, active4 } = this.state;
     return (
       <AppContainer>
-        <Header as='h1' style={styles.text}>Get A Grip</Header>
+        <Header as='h1' style={styles.text}>Kings Peak Customs</Header>
         <Container>
           <Image src={LandImage} alt='Logo' />
         </Container>
         <Divider />
         <Container style={styles.middleContainer}>
-          <Header as='h3' style={styles.text}>Get A Grip Customs is Dedicated to providing you with the highest standard of customized Grips, Frameworks, and Slideworks.</Header>
+          <Header as='h3' style={styles.text}>Kings Peak Customs is Dedicated to providing you with the highest standard of customized Grips, Frameworks, and Slideworks.</Header>
           <Header as='h5' style={styles.text}>We custom make every pistol so that yours is not only unique, but build just the way that you want.</Header>
           <Header as='h5' style={styles.text}>We have several different builds that we <Link to='/gallery'>really enjoy</Link>, or if you want you can start your custom build <Link to='/pistol'>right here</Link> by selecting what pistol you would like to customize!</Header>
         </Container>
@@ -167,7 +169,7 @@ class Home extends Component {
           <Header as="h4" style={styles.text}>1 Coat of Cerakote: $20</Header>
           <Header as="h4" style={styles.text}>And if, for any reason, you need to return it. It is just $20 for the return shipping, which includes insurance.</Header>
         </Container>
-        <Divider />
+        <br />
       </AppContainer>
     );
   }

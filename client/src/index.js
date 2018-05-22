@@ -16,7 +16,6 @@ const theme = {
 
 injectGlobal`
   html, body {
-    background-color: linear-gradient(to bottom right, black, silver);
     width: 100%;
     height: 100%;
     color: white;

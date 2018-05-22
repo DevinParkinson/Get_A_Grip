@@ -3,6 +3,14 @@ import { Header, Form, Button, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { registerUser } from '../actions/auth';
 import { setFlash } from '../actions/flash';
+import styled from 'styled-components';
+
+const AppContainer = styled.div`
+  justify-content: center;
+  background-image: url("http://www.copiaguechamber.org/wp-content/uploads/2017/09/background-dark-metal.jpg");
+  background-attachment: fixed;
+  width: 100%;
+`
 
 class Register extends Component {
   state = { email: '', password: '', passwordConfirmation: '' };
@@ -28,7 +36,7 @@ class Register extends Component {
     const { email, password, passwordConfirmation } = this.state;
 
     return (
-      <Segment basic>
+      <AppContainer basic>
         <Header as='h1' textAlign='center'>Register Component</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
@@ -67,7 +75,7 @@ class Register extends Component {
             <Button type='submit'>Submit</Button>
           </Segment>
         </Form>
-      </Segment>
+      </AppContainer>
     );
   }
 }

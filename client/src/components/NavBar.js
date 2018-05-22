@@ -7,8 +7,10 @@ import styled from 'styled-components';
 import { handleLogout } from '../actions/auth';
 
 const NavContainer = styled.div`
- background: linear-gradient( silver, black, black) !important;
- display: block
+  background-image: url("http://www.copiaguechamber.org/wp-content/uploads/2017/09/background-dark-metal.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: block
 `
 
 const LogoImage = styled(Image)`
@@ -48,14 +50,14 @@ class NavBar extends Component {
 
   render() {
     return (
-      <NavContainer>
+      <NavContainer fluid>
         <Menu secondary>
           <Menu.Menu position='left'>
             <Menu.Item>
-              <Dropdown text='Menu' pointing style={styles.text}>
+              <Dropdown text='Menu' style={styles.text}>
                 <Dropdown.Menu>
                   <Dropdown.Item>
-                    <Dropdown text='Pistols' pointing>
+                    <Dropdown text='Pistols'>
                       <Dropdown.Menu>
                         <Link to='/pistol'>
                           <Dropdown.Item>Choose Your Pistol</Dropdown.Item>
@@ -67,7 +69,7 @@ class NavBar extends Component {
                     </Dropdown>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Dropdown text='Rifles (coming soon)' disabled pointing>
+                    <Dropdown text='Rifles (coming soon)' disabled>
                       <Dropdown.Menu>
                         <Dropdown.Item>
                           Under Construction
@@ -93,7 +95,6 @@ class NavBar extends Component {
           </Menu.Menu>
           { this.rightNavs() }
         </Menu>
-        <Divider inverted />
       </NavContainer>
     );
   }

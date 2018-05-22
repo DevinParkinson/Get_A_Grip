@@ -2,9 +2,21 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Redirect } from 'react-router'
-import { Container, Header, Button, Checkbox, Form, Divider, Grid } from 'semantic-ui-react';
-import {connect} from 'react-redux'
+import { Container, Header, Button, Checkbox, Form, Divider, Grid, Image } from 'semantic-ui-react';
+import {connect} from 'react-redux';
+import Glock from '../images/Glock.jpg';
+import SmWs from '../images/Sm&Ws.jpg';
+import Sig from '../images/sigsauer.jpg';
+import Hk from '../images/Hk.jpg';
 import { setHeaders } from '../actions/headers';
+import styled from 'styled-components';
+
+const AppContainer = styled.div`
+  justify-content: center;
+  background-image: url("http://www.copiaguechamber.org/wp-content/uploads/2017/09/background-dark-metal.jpg");
+  background-attachment: fixed;
+  width: 100%;
+`
 
 class CustomizePistol extends React.Component {
   state = { pistols: [], my_pistol: [], redirect: false }
@@ -53,18 +65,19 @@ class CustomizePistol extends React.Component {
 
   render() {
     const { my_pistol } = this.state;
-    if (my_pistol === 0)
+    if (my_pistol.length === 0)
     return (
-      <Container>
+      <AppContainer>
         <Header as="h1" style={styles.text}>
           Looks like you have not selected a pistol. <Link to="/pistol">Click Here</Link> to select your pistol first.
         </Header>
-      </Container>
+      </AppContainer>
     )
       return (
         my_pistol.map( p =>
         <Grid columns={3}>
-            <Container fluid>
+          <Grid.Column>
+            <AppContainer>
               <Header as="h2" key={p.id} style={styles.text}>
                   The Gun that you have chosen is: {p.make} | {p.pistol_model} | {p.gen}
               </Header>
@@ -82,7 +95,26 @@ class CustomizePistol extends React.Component {
                 Remove
               </Button>
               <Divider />
-          </Container>
+            </AppContainer>
+          </Grid.Column>
+          <Grid.Column>
+            if ({p.make} === "Glock")
+            return (
+                <AppContainer>
+                  <Image src={Glock} alt="Glock" />
+                </AppContainer>
+              ) else ({p.make} === "Smith & Wesson")
+              return (
+                <AppContainer>
+                  <Image src={SmWs} alt="Smith and Wesson" />
+                </AppContainer>
+              ) else if ({p.make} === "Sig Sauer")
+              return (
+                <AppContainer>
+                  <Image src={Sig} alt="Sig Sauer" />
+                </AppContainer>
+              )
+          </Grid.Column>
         {this.redirectMe()}
         </Grid>
         )

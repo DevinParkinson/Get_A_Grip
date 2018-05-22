@@ -5,6 +5,15 @@ import axios from 'axios';
 import { Redirect } from 'react-router'
 import {Link} from 'react-router-dom';
 import { setHeaders } from '../actions/headers';
+import styled from 'styled-components';
+
+const AppContainer = styled.div`
+  justify-content: center;
+  background-image: url("http://www.copiaguechamber.org/wp-content/uploads/2017/09/background-dark-metal.jpg");
+  background-attachment: fixed;
+  width: 100%;
+`
+
 
 class Pistol extends React.Component {
   state = { pistols: [], my_pistol: [] }
@@ -29,6 +38,7 @@ class Pistol extends React.Component {
     axios.put(`/api/pistols/${id}`)
       .then( res => {
         dispatch(setHeaders(res.headers))
+        this.setState({ redirect: true})
       })
   }
 
@@ -42,7 +52,7 @@ class Pistol extends React.Component {
     const { pistols, my_pistol } = this.state;
       if (my_pistol.length === 0)
     return (
-      <Container>
+      <AppContainer>
         <Header style={styles.text}>Time to Build!</Header>
         <Header style={styles.text} as='h3'>Select your gun first so we can get your customization started.</Header>
           <Dropdown
@@ -60,17 +70,17 @@ class Pistol extends React.Component {
               <Dropdown.Item
                 key={p.id}
                 onClick={() => this.handleSelect(p.id)}
-                ><Link to={`/customize-pistol`}>{p.make} | {p.pistol_model} | {p.gen}</Link></Dropdown.Item>
+                >{p.make} | {p.pistol_model} | {p.gen}</Dropdown.Item>
               )}
             </Dropdown.Menu>
           </Dropdown>
           {this.redirectMe()}
-      </Container>
+      </AppContainer>
     )
         return (
-          <Container>
+          <AppContainer>
             <Header as="h1" style={styles.text}>You have already selected a pistol. <Link to="/customize-pistol">Click Here</Link> to see your pistol and start customizing.</Header>
-          </Container>
+          </AppContainer>
         )
   }
 

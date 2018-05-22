@@ -41,16 +41,16 @@ class EditPistolForm extends React.Component {
   }
 
   renderMultiInputs(values, name) {
-    return values.map((value, index) => {
-      if (values === 0)
+    if (values.length === 0)
       return (
         <Form.Input
           name={name}
-          defaultValue={value}
+          defaultValue= {name}
           required
           onChange={ this.handleChange }
-          />
-        )
+        />
+      )
+    return values.map((value, index) => {
       return (
         <Form.Input
           key = { index }
