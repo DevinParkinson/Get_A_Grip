@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Header, Image, Container, Divider, Grid, Dimmer, Card } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import LandImage from '../images/LandImage.jpg';
