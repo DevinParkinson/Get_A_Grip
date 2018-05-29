@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Image, Container, Divider, Grid, Dimmer, Card, Button } from 'semantic-ui-react';
+import { Header, Image, Container, Divider, Grid, Dimmer, Card } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import LandImage from '../images/LandImage.jpg';
 import Framework from '../images/Frame.jpg';
@@ -25,7 +25,7 @@ const StyledImage = styled(Image)`
   justify-content: center !important;
   display: flex !important;
   height: 25vh !important;
-  width: auto !important;
+  width: 50vh !important;
 `
 
 class Home extends Component {
@@ -56,13 +56,19 @@ class Home extends Component {
         <Container style={styles.middleContainer}>
           <GridMain>
           <Grid>
-            <Grid.Row centered columns={4}>
+            <Grid.Row columns={2}>
               <Grid.Column
                 computer={8}
                 mobile={12}
                 tablet={8}
               >
-              <Dimmer.Dimmable as={Card} dimmed={active4}>
+              <Dimmer.Dimmable
+                as={Card}
+                dimmed={active4}
+                centered
+                onMouseEnter={this.handleShow4}
+                onMouseLeave={this.handleShow4}
+                >
                 <Dimmer active={active4}>
                   <Header style={styles.text} as='h3'>Grips</Header>
                   <Header style={styles.text} as='h5'>Grip determines the actual grip of the gun.</Header>
@@ -70,16 +76,6 @@ class Home extends Component {
                 <Header as='h2'>Grips</Header>
                 <StyledImage src={Grip} />
               </Dimmer.Dimmable>
-              <Button.Group compact>
-                <Button onClick={this.handleShow4}>
-                  { active4 === false
-                    ?
-                    "Show"
-                    :
-                    "Hide"
-                  }
-                </Button>
-              </Button.Group>
               <Divider hidden />
             </Grid.Column>
               <Grid.Column
@@ -87,7 +83,7 @@ class Home extends Component {
                 mobile={12}
                 tablet={8}
               >
-              <Dimmer.Dimmable as={Card} dimmed={active1}>
+              <Dimmer.Dimmable as={Card} dimmed={active1} centered onMouseEnter={this.handleShow} onMouseLeave={this.handleShow}>
                 <Dimmer active={active1}>
                   <Header style={styles.text} as='h3'>Framework is the work that is done on the frame of the pistol</Header>
                   <Header style={styles.text} as='h5'>Here are a couple of the different styles you can choose from:</Header>
@@ -98,62 +94,44 @@ class Home extends Component {
                 <Header as='h2'>Frameworks</Header>
                 <StyledImage src={Framework} />
               </Dimmer.Dimmable>
-              <Button.Group compact>
-                <Button onClick={this.handleShow}>
-                  { active1 === false
-                    ?
-                    "Show"
-                    :
-                    "Hide"
-                  }
-                </Button>
-              </Button.Group>
             </Grid.Column>
             <Grid.Column
               computer={8}
               mobile={12}
               tablet={8}
             >
-            <Dimmer.Dimmable as={Card} dimmed={active2}>
-              <Dimmer active={active2} onClickOutside={this.handleShow2}>
+            <Dimmer.Dimmable
+              as={Card}
+              dimmed={active2}
+              centered
+              onMouseEnter={this.handleShow2}
+              onMouseLeave={this.handleShow2}
+              >
+              <Dimmer active={active2}>
                 <Header style={styles.text} as='h3'>Slidework is the work that is done on the slide of the pistol</Header>
               </Dimmer>
               <Header as='h2'>Slidework</Header>
               <StyledImage src={Slides} />
             </Dimmer.Dimmable>
-            <Button.Group compact>
-              <Button onClick={this.handleShow2}>
-                { active2 === false
-                  ?
-                  "Show"
-                  :
-                  "Hide"
-                }
-              </Button>
-            </Button.Group>
           </Grid.Column>
           <Grid.Column
             computer={8}
             mobile={12}
             tablet={8}
           >
-            <Dimmer.Dimmable as={Card} dimmed={active3}>
+            <Dimmer.Dimmable
+              as={Card}
+              dimmed={active3}
+              centered
+              onMouseEnter={this.handleShow3}
+              onMouseLeave={this.handleShow3}
+              >
               <Dimmer active={active3} onClickOutside={this.handleShow3}>
                 <Header style={styles.text} as='h3'>Cerakote is the type of paint on the pistol</Header>
               </Dimmer>
                 <Header as='h2'>Cerakote</Header>
                   <StyledImage src={Cerakote} />
                 </Dimmer.Dimmable>
-              <Button.Group compact>
-                <Button onClick={this.handleShow3}>
-                  { active3 === false
-                    ?
-                    "Show"
-                    :
-                    "Hide"
-                  }
-                </Button>
-              </Button.Group>
               </Grid.Column>
             </Grid.Row>
           </Grid>
