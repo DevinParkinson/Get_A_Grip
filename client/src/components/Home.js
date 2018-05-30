@@ -28,7 +28,7 @@ const StyledImage = styled(Image)`
   width: 50vh !important;
 `
 
-class Home extends Component {
+class Home extends React.Component {
   state = { active1: false, active2: false, active3: false, active4: false}
 
   handleShow = () => this.setState({ active1: !this.state.active1 })

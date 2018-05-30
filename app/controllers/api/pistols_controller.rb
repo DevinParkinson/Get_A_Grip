@@ -34,6 +34,17 @@ class Api::PistolsController < ApplicationController
     end
   end
 
+  def update_modifications
+    current_user.my_order << modifications_array[:id]
+    current_user.save
+    render json: current_user
+  end
+
+  def my_order
+    render json: User.mine(current_user.my_order)
+    current_user.save
+  end
+
   def destroy
     current_user.my_pistol.delete_if{|i| i == @pistol.id}
     current_user.save

@@ -15,11 +15,12 @@ const AppContainer = styled.div`
   justify-content: center;
   background-image: url("http://www.copiaguechamber.org/wp-content/uploads/2017/09/background-dark-metal.jpg");
   background-attachment: fixed;
-  width: 100%;
+  width: fluid;
+  height: 100vh;
 `
 
 class CustomizePistol extends React.Component {
-  state = { pistols: [], my_pistol: [], redirect: false }
+  state = { pistols: [], my_pistol: [], redirect: false, my_order: [] }
 
   componentDidMount = () => {
     const { dispatch } = this.props;
@@ -28,6 +29,11 @@ class CustomizePistol extends React.Component {
         dispatch(setHeaders(res.headers))
         this.setState({ my_pistol: res.data })
       })
+      axios.get('/api/my_order')
+        .then( res => {
+          dispatch(setHeaders(res.headers))
+          this.setState({ my_order: res.data })
+        })
   }
 
   handleRemove = (id) => {
@@ -64,7 +70,7 @@ class CustomizePistol extends React.Component {
   }
 
   render() {
-    const { my_pistol } = this.state;
+    const { my_pistol, my_order } = this.state;
     if (my_pistol.length === 0)
     return (
       <AppContainer>
@@ -75,50 +81,44 @@ class CustomizePistol extends React.Component {
     )
       return (
         my_pistol.map( p =>
-        <Grid columns={3}>
-          <Grid.Column>
-            <AppContainer>
-              <Header as="h2" key={p.id} style={styles.text}>
-                  The Gun that you have chosen is: {p.make} | {p.pistol_model} | {p.gen}
-              </Header>
-              <Header as="h5" style={styles.texts}>Modifications:</Header>
-                <Form.Field style={styles.texts}>{ this.renderMods(p)}</Form.Field>
-              <Header as="h5" style={styles.texts}>Textures:</Header>
-                <Form.Field style={styles.texts}>{ this.renderTextures(p)}</Form.Field>
-              <Header as="h5" style={styles.texts}>Cerakote:</Header>
-                <Form.Field style={styles.texts}>{ this.renderCerakote(p)}</Form.Field>
-              <Header as="h5" style={styles.texts}>Click the button below if you clicked on the wrong gun.</Header>
-              <Button
-                size='tiny'
-                onClick={() => this.handleRemove(p.id)}
-                >
-                Remove
-              </Button>
-              <Divider />
-            </AppContainer>
-          </Grid.Column>
-          <Grid.Column>
-            if ({p.make} === "Glock")
-            return (
-                <AppContainer>
-                  <Image src={Glock} alt="Glock" />
-                </AppContainer>
-              ) else ({p.make} === "Smith & Wesson")
-              return (
-                <AppContainer>
-                  <Image src={SmWs} alt="Smith and Wesson" />
-                </AppContainer>
-              ) else if ({p.make} === "Sig Sauer")
-              return (
-                <AppContainer>
-                  <Image src={Sig} alt="Sig Sauer" />
-                </AppContainer>
+        <AppContainer>
+          <Header as="h2" key={p.id} style={styles.text}>
+              The Gun that you have chosen is: {p.make} | {p.pistol_model} | {p.gen}
+          </Header>
+          <Grid columns={2}>
+            <Grid.Column>
+              <AppContainer>
+                <Header as="h5" style={styles.texts}>Modifications:</Header>
+                  <Form.Field style={styles.texts}>{ this.renderMods(p)}</Form.Field>
+                <Divider hidden />
+                <Header as="h5" style={styles.texts}>Textures:</Header>
+                  <Form.Field style={styles.texts}>{ this.renderTextures(p)}</Form.Field>
+                <Divider hidden />
+                <Header as="h5" style={styles.texts}>Cerakote:</Header>
+                  <Form.Field style={styles.texts}>{ this.renderCerakote(p)}</Form.Field>
+                <Divider hidden />
+                <Divider hidden />
+                <Header as="h5" style={styles.texts}>Click the button below if you clicked on the wrong gun.</Header>
+                <Button
+                  size='tiny'
+                  onClick={() => this.handleRemove(p.id)}
+                  >
+                  Remove
+                </Button>
+              </AppContainer>
+            </Grid.Column>
+            <Grid.Column>
+              <AppContainer>
+                my_order.map( order =>
+                <Header as="h3" style={styles.rtexts}>Here's your order</Header>
               )
-          </Grid.Column>
-        {this.redirectMe()}
-        </Grid>
+              </AppContainer>
+            </Grid.Column>
+            {this.redirectMe()}
+          </Grid>
+        </AppContainer>
         )
-      )
+        )
   }
 }
 
@@ -126,11 +126,15 @@ const styles = {
   text: {
     color: "white",
     textAlign: "center",
+    textDecoration: "underline",
   },
   texts: {
     color: "white",
     textAlign: "left",
-
+  },
+  rtexts: {
+    color: "white",
+    textAlign: "center",
   }
 }
 

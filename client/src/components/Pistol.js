@@ -12,6 +12,7 @@ const AppContainer = styled.div`
   background-image: url("http://www.copiaguechamber.org/wp-content/uploads/2017/09/background-dark-metal.jpg");
   background-attachment: fixed;
   width: 100%;
+  height: 100vh;
 `
 
 
@@ -102,9 +103,8 @@ const styles = {
     textAlign: "center",
   },
   dropdown: {
-    margin: '20px',
-    padding: '20px',
-    border: '5px solid #bfbfbf',
+    margin: '1%',
+    padding: '1%',
     height: '4vh',
     width: 'fill',
   },
