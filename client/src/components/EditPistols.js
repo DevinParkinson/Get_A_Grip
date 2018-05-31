@@ -29,46 +29,48 @@ class EditPistols extends React.Component {
   pistolsList = () => {
     const { pistols } = this.props
     return (pistols.map( p =>
-      <Card key={ p.id } as={ Transparent } >
-        <Card.Content>
-          <Card.Header as="h3">
-            { p.make }
-          </Card.Header>
-          <Card.Header as="h3">
-            { p.model }
-          </Card.Header>
-          <Card.Meta>
-            { p.pistol_model }
-          </Card.Meta>
-          <Card.Meta>
-            { p.gen }
-          </Card.Meta>
-          <Card.Description>
-            ${ p.price }
-          </Card.Description>
-          <Card.Description>
-            { p.caliber }
-          </Card.Description>
-          <Card.Description>
-            Available Modifications: { p.modifications }
-          </Card.Description>
-          <Divider />
-          <Card.Description>
-            { p.textures }
-          </Card.Description>
-          <Divider />
-          <Card.Description>
-            { p.cerakote }
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-          <Link to={ `/edit/${ p.id }` }>
-          <Button color='blue'>
-          View Pistol
-          </Button>
-          </Link>
-        </Card.Content>
-      </Card >
+      <AppContainer>
+        <Card key={ p.id } as={ Transparent } >
+          <Card.Content>
+            <Card.Header as="h3">
+              { p.make }
+            </Card.Header>
+            <Card.Header as="h3">
+              { p.model }
+            </Card.Header>
+            <Card.Meta>
+              { p.pistol_model }
+            </Card.Meta>
+            <Card.Meta>
+              { p.gen }
+            </Card.Meta>
+            <Card.Description>
+              ${ p.price }
+            </Card.Description>
+            <Card.Description>
+              { p.caliber }
+            </Card.Description>
+            <Card.Description>
+              Available Modifications: { p.modifications }
+            </Card.Description>
+            <Divider />
+            <Card.Description>
+              { p.textures }
+            </Card.Description>
+            <Divider />
+            <Card.Description>
+              { p.cerakote }
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <Link to={ `/edit/${ p.id }` }>
+            <Button color='blue'>
+            View Pistol
+            </Button>
+            </Link>
+          </Card.Content>
+        </Card >
+      </AppContainer>
       )
     )
   }

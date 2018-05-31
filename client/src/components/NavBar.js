@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Divider, Dropdown, Image } from 'semantic-ui-react';
+import { Menu, Dropdown, Image } from 'semantic-ui-react';
 import Logo from '../images/Logo.jpg';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
