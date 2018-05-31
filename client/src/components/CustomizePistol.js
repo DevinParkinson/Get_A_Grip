@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { Redirect } from 'react-router'
 import { Container, Header, Button, Checkbox, Form, Divider, Grid, Image } from 'semantic-ui-react';
