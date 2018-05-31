@@ -3,11 +3,6 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Redirect } from 'react-router'
 import { Container, Header, Button, Checkbox, Form, Divider, Grid, Image } from 'semantic-ui-react';
-import {connect} from 'react-redux';
-import Glock from '../images/Glock.jpg';
-import SmWs from '../images/Sm&Ws.jpg';
-import Sig from '../images/sigsauer.jpg';
-import Hk from '../images/Hk.jpg';
 import { setHeaders } from '../actions/headers';
 import styled from 'styled-components';
 
