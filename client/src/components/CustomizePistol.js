@@ -3,7 +3,7 @@ import axios from 'axios'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { Redirect } from 'react-router'
-import { Container, Header, Button, Checkbox, Form, Divider, Grid, Image } from 'semantic-ui-react';
+import { Header, Button, Checkbox, Form, Divider, Grid } from 'semantic-ui-react';
 import { setHeaders } from '../actions/headers';
 import styled from 'styled-components';
 
@@ -66,7 +66,7 @@ class CustomizePistol extends React.Component {
   }
 
   render() {
-    const { my_pistol, my_order } = this.state;
+    const { my_pistol } = this.state;
     if (my_pistol.length === 0)
     return (
       <AppContainer>
@@ -105,9 +105,6 @@ class CustomizePistol extends React.Component {
             </Grid.Column>
             <Grid.Column>
               <AppContainer>
-                my_order.map( order =>
-                <Header as="h3" style={styles.rtexts}>Here's your order</Header>
-              )
               </AppContainer>
             </Grid.Column>
             {this.redirectMe()}
