@@ -1,5 +1,5 @@
 class Api::PistolsController < ApplicationController
-  before_action :authenticate_user!, only: [:my_pistol, :update, :delete]
+  before_action :authenticate_user!, only: [:my_pistol, :update, :delete, :update_modifications]
   before_action :set_pistol, only: [:update, :destroy, :update_pistol]
 
   def index
@@ -35,7 +35,7 @@ class Api::PistolsController < ApplicationController
   end
 
   def update_modifications
-    current_user.my_order << modifications_array[:id]
+    current_user.my_order << modifications[:id]
     current_user.save
     render json: current_user
   end
