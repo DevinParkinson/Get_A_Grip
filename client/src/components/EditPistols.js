@@ -6,13 +6,6 @@ import { Link } from 'react-router-dom';
 import { getPistols } from '../actions/pistols';
 import { Segment, Card, Header, Button, Divider } from 'semantic-ui-react';
 
-const AppContainer = styled.div`
-  justify-content: center;
-  background-image: url("http://www.copiaguechamber.org/wp-content/uploads/2017/09/background-dark-metal.jpg");
-  background-attachment: fixed;
-  width: 100%;
-`
-
 class EditPistols extends React.Component {
   state = { category: '', showForm: false };
 
@@ -29,7 +22,6 @@ class EditPistols extends React.Component {
   pistolsList = () => {
     const { pistols } = this.props
     return (pistols.map( p =>
-      <AppContainer>
         <Card key={ p.id } as={ Transparent } >
           <Card.Content>
             <Card.Header as="h3">
@@ -70,7 +62,6 @@ class EditPistols extends React.Component {
             </Link>
           </Card.Content>
         </Card >
-      </AppContainer>
       )
     )
   }
