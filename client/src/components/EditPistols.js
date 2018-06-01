@@ -22,7 +22,7 @@ class EditPistols extends React.Component {
   pistolsList = () => {
     const { pistols } = this.props
     return (pistols.map( p =>
-        <Card key={ p.id } as={ Transparent } >
+        <Card key={ p.id } >
           <Card.Content>
             <Card.Header as="h3">
               { p.make }
