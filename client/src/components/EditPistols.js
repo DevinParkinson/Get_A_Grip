@@ -96,9 +96,6 @@ class EditPistols extends React.Component {
   }
 }
 
-const Transparent = styled.div`
-  background: transparent !important;
-`
 
 var styles = {
   text: {

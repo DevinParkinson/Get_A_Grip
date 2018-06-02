@@ -35,14 +35,13 @@ class Api::PistolsController < ApplicationController
   end
 
   def update_modifications
-    current_user.my_order << modifications[:id]
+    current_user.my_order << params[:id]
     current_user.save
     render json: current_user
   end
 
   def my_order
-    render json: User.mine(current_user.my_order)
-    current_user.save
+    render json: Pistol.get_order(current_user)
   end
 
   def destroy

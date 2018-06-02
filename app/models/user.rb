@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
   has_many :pistols
 
   serialize :my_pistol, Array
-  serialize :my_order, Array
 
   def self.mine(ids)
     ids = ids.empty? ? [0] : ids

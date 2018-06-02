@@ -27,6 +27,7 @@ class CustomizePistol extends React.Component {
       }).then(
         axios.get('/api/my_order')
           .then( res => {
+            console.log(res.data)
               dispatch(setHeaders(res.headers))
               this.setState({ my_order: res.data })
         })
@@ -44,7 +45,7 @@ class CustomizePistol extends React.Component {
 
   handleMods = (id) => {
     const {dispatch} = this.props;
-    axios.put(`/api/my_order/${id}`)
+    axios.put(`/api/my_order/`)
     .then( res => {
       dispatch(setHeaders(res.headers))
       this.setState({ my_order: res.data })
@@ -59,7 +60,7 @@ class CustomizePistol extends React.Component {
 
   renderMods(p) {
     if(p.modifications) {
-      return p.modifications.map(mod => (<div><Checkbox onClick={this.handleMods(p.modifications.id)} label={<label style={styles.texts}>{mod}</label>} /></div>))
+      return p.modifications.map((mod, i) => (<div><Checkbox onClick={() => this.handleMods(p.modifications[i])} label={<label style={styles.texts}>{mod}</label>} /></div>))
     }
   }
 
@@ -114,9 +115,10 @@ class CustomizePistol extends React.Component {
               </AppContainer>
             </Grid.Column>
             <Grid.Column>
-              <AppContainer>
-
-              </AppContainer>
+              <Header as='h3' style={styles.rtexts}>Your Order</Header>
+              {my_order.map( order =>
+                <Header as='h5' key={order.id} style={styles.texts}>{order.id}</Header>
+              )}
             </Grid.Column>
             {this.redirectMe()}
           </Grid>

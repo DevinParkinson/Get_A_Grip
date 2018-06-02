@@ -94,6 +94,7 @@ class Home extends React.Component {
                 <Header as='h2'>Frameworks</Header>
                 <StyledImage src={Framework} />
               </Dimmer.Dimmable>
+              <Divider hidden />
             </Grid.Column>
             <Grid.Column
               computer={8}
@@ -113,6 +114,7 @@ class Home extends React.Component {
               <Header as='h2'>Slidework</Header>
               <StyledImage src={Slides} />
             </Dimmer.Dimmable>
+            <Divider hidden />
           </Grid.Column>
           <Grid.Column
             computer={8}
@@ -132,6 +134,7 @@ class Home extends React.Component {
                 <Header as='h2'>Cerakote</Header>
                   <StyledImage src={Cerakote} />
                 </Dimmer.Dimmable>
+                <Divider hidden />
               </Grid.Column>
             </Grid.Row>
           </Grid>
