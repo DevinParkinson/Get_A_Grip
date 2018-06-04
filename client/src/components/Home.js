@@ -49,7 +49,7 @@ class Home extends React.Component {
         <Container style={styles.middleContainer}>
           <Header as='h3' style={styles.text}>Kings Peak Customs is Dedicated to providing you with the highest standard of customized Grips, Frameworks, and Slideworks.</Header>
           <Header as='h5' style={styles.text}>We custom make every pistol so that yours is not only unique, but build just the way that you want.</Header>
-          <Header as='h5' style={styles.text}>We have several different builds that we <Link to='/gallery'>really enjoy</Link>, or if you want you can start your custom build <Link to='/pistol'>right here</Link> by selecting what pistol you would like to customize!</Header>
+          <Header as='h5' style={styles.text}>We have several different builds that we <Link to='/gallery' rel='noopener noreferrer'>really enjoy</Link>, or if you want you can start your custom build <Link to='/pistol' rel='noopener noreferrer'>right here</Link> by selecting what pistol you would like to customize!</Header>
         </Container>
         <Divider hidden />
         <Divider hidden />

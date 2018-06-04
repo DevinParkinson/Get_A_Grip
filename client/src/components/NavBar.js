@@ -38,10 +38,10 @@ class NavBar extends Component {
     }
     return (
       <Menu.Menu position='right'>
-        <Link to='/register'>
+        <Link to='/register' rel='noopener noreferrer'>
           <Menu.Item name='Register' style={styles.text} />
         </Link>
-        <Link to='/login'>
+        <Link to='/login' rel='noopener noreferrer'>
           <Menu.Item name='Login' style={styles.text} />
         </Link>
       </Menu.Menu>
@@ -59,17 +59,17 @@ class NavBar extends Component {
                   <Dropdown.Item>
                     <Dropdown text='Pistols'>
                       <Dropdown.Menu>
-                        <Link to='/pistol'>
+                        <Link to='/pistol' rel='noopener noreferrer'>
                           <Dropdown.Item>Choose Your Pistol</Dropdown.Item>
                         </Link>
-                        <Link to='/customize-pistol'>
+                        <Link to='/customize-pistol' rel='noopener noreferrer'>
                           <Dropdown.Item>Customize Your Pistol</Dropdown.Item>
                         </Link>
                       </Dropdown.Menu>
                     </Dropdown>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Dropdown text='Rifles (coming soon)' disabled>
+                    <Dropdown text='Holders (coming soon)' disabled>
                       <Dropdown.Menu>
                         <Dropdown.Item>
                           Under Construction
@@ -77,7 +77,7 @@ class NavBar extends Component {
                       </Dropdown.Menu>
                     </Dropdown>
                   </Dropdown.Item>
-                    <Link to='/dealer'>
+                    <Link to='/dealer' rel='noopener noreferrer'>
                       <Dropdown.Item>
                           Become A Dealer?
                       </Dropdown.Item>
@@ -88,7 +88,7 @@ class NavBar extends Component {
           </Menu.Menu>
           <Menu.Menu>
             <Menu.Item>
-              <a href='/'>
+              <a href='/' rel='noopener noreferrer'>
                 <LogoImage src={Logo} alt="Logo" />
               </a>
             </Menu.Item>

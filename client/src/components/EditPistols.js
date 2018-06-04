@@ -69,7 +69,7 @@ class EditPistols extends React.Component {
   render() {
     const { showForm } = this.state
     return (
-      <Segment textAlign='center' style={ styles.base }>
+      <Segment>
         <Header as="h3" textAlign="center">
           Menu
         </Header>
@@ -77,7 +77,7 @@ class EditPistols extends React.Component {
           { showForm ? "Show Pistols" : "Create Pistol" }
         </Button>
         { showForm ?
-          <EditPistolForm closeForm={ this.toggleForm } />
+          <EditPistolForm closeForm={ this.toggleForm } backgroundColor="#000000" />
           :
           <div>
             <Divider />

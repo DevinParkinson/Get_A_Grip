@@ -13,6 +13,7 @@ const AppContainer = styled.div`
   background-attachment: fixed;
   width: fluid;
   height: 100vh;
+  overflow: auto;
 `
 
 class CustomizePistol extends React.Component {
@@ -92,17 +93,23 @@ class CustomizePistol extends React.Component {
           <Header as="h2" key={p.id} style={styles.text}>
               The Gun that you have chosen is: {p.make} | {p.pistol_model} | {p.gen}
           </Header>
-          <Grid columns={2}>
+          <Grid columns={2} rows="equal">
             <Grid.Column>
               <AppContainer>
-                <Header as="h5" style={styles.texts}>Modifications:</Header>
-                  <Form.Field style={styles.texts}>{ this.renderMods(p)}</Form.Field>
+                <Grid.Row overFlow="scroll" height="15vh">
+                  <Header as="h5" style={styles.texts}>Modifications:</Header>
+                    <Form.Field style={styles.texts}>{ this.renderMods(p)}</Form.Field>
+              </Grid.Row>
                 <Divider hidden />
+              <Grid.Row>
                 <Header as="h5" style={styles.texts}>Textures:</Header>
                   <Form.Field style={styles.texts}>{ this.renderTextures(p)}</Form.Field>
+              </Grid.Row>
                 <Divider hidden />
+              <Grid.Row overFlow="scroll">
                 <Header as="h5" style={styles.texts}>Cerakote:</Header>
                   <Form.Field style={styles.texts}>{ this.renderCerakote(p)}</Form.Field>
+              </Grid.Row>
                 <Divider hidden />
                 <Divider hidden />
                 <Header as="h5" style={styles.texts}>Click the button below if you clicked on the wrong gun.</Header>

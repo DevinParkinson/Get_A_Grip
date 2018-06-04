@@ -41,7 +41,7 @@ class EditPistolForm extends React.Component {
   }
 
   renderMultiInputs(values, name) {
-    if (values.length === 0)
+    if (!values)
       return (
         <Form.Input
           name={name}

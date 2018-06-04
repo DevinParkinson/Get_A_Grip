@@ -10,9 +10,9 @@ class Footer extends Component{
     return (
       <Segment inverted vertical>
         <FooterContainer>
-          <Grid divided inverted>
+          <Grid divided inverted columns={2}>
             <Grid.Row>
-              <Grid.Column mobile={8} tablet={8} computer={5}>
+              <Grid.Column>
                 <Header as='h3' textAlign='center' style={{color: '#ffffff'}}>
                 Contact Information
                 </Header>
@@ -23,8 +23,11 @@ class Footer extends Component{
                 <Header as='h4' textAlign='center' style={{color: '#ffffff'}}>
                   Info@getstipplegrip.com
                 </Header>
+                <Header as='h3' textAlign='center' style={{color: '#ffffff'}}>
+                  <Link to='/faq' rel='noopener noreferrer' style={{color: '#ffffff'}}>FAQ's</Link>
+                </Header>
               </Grid.Column>
-              <Grid.Column mobile={8} tablet={8} computer={5}>
+              <Grid.Column>
                 <Header as='h3' textAlign='center' style={{color: '#ffffff'}}>
                 Want to see everything happening with Get A Grip?
                 </Header>
@@ -34,17 +37,6 @@ class Footer extends Component{
                 <Header textAlign="center" style={{color: '#ffffff'}}>
                   <Link to="https://www.facebook.com/getstipplegrip/?ref=br_rs" target="_blank"><Icon name='facebook square' size='large' /></Link>
                   <Link to="https://www.instagram.com/getagrip_customs/" target="_blank" ><Icon name='instagram' size='large' /></Link>
-                </Header>
-              </Grid.Column>
-              <Grid.Column mobile={8} tablet={8} computer={5}>
-                <Header as='h3' textAlign='center' style={{color: '#ffffff'}}>
-                <Link to='/faq' style={{color: '#ffffff'}}>FAQ's</Link>
-                </Header>
-                <Header as='h4' textAlign='center' style={{color: '#ffffff'}}>
-                    Terms and Conditions...
-                </Header>
-                <Header as='h4' textAlign='center' style={{color: '#ffffff'}}>
-                  License stuff...
                 </Header>
               </Grid.Column>
             </Grid.Row>
@@ -61,11 +53,9 @@ class Footer extends Component{
 
 // Styled Components
 const FooterContainer = styled.div `
-  style={{
-    position:'absolute',
-    bottom:'0',
-    width:'100%',
-  }}
+    position: absolute,
+    bottom: 0,
+    width: 100%,
 `
 
 export default Footer;
