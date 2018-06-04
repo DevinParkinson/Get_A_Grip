@@ -96,7 +96,7 @@ class CustomizePistol extends React.Component {
           <Grid columns={2} rows="equal">
             <Grid.Column>
               <AppContainer>
-                <Grid.Row overFlow="scroll" height="15vh">
+                <Grid.Row>
                   <Header as="h5" style={styles.texts}>Modifications:</Header>
                     <Form.Field style={styles.texts}>{ this.renderMods(p)}</Form.Field>
               </Grid.Row>
@@ -106,7 +106,7 @@ class CustomizePistol extends React.Component {
                   <Form.Field style={styles.texts}>{ this.renderTextures(p)}</Form.Field>
               </Grid.Row>
                 <Divider hidden />
-              <Grid.Row overFlow="scroll">
+              <Grid.Row>
                 <Header as="h5" style={styles.texts}>Cerakote:</Header>
                   <Form.Field style={styles.texts}>{ this.renderCerakote(p)}</Form.Field>
               </Grid.Row>
@@ -121,12 +121,12 @@ class CustomizePistol extends React.Component {
                 </Button>
               </AppContainer>
             </Grid.Column>
-            <Grid.Column>
-              <Header as='h3' style={styles.rtexts}>Your Order</Header>
               {my_order.map( order =>
-                <Header as='h5' key={order.id} style={styles.texts}>{order.id}</Header>
-              )}
+                <Grid.Column>
+                  <Header as='h3' style={styles.rtexts}>Your Order</Header>
+                <Header as='h5' key={order.id} style={styles.texts}>{order.all}</Header>
             </Grid.Column>
+          )}
             {this.redirectMe()}
           </Grid>
         </AppContainer>
