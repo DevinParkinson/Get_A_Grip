@@ -67,7 +67,7 @@ class CustomizePistol extends React.Component {
 
   renderTextures(pistol) {
     if(pistol.textures) {
-      return pistol.textures.map(mod => (<div><Checkbox label={<label style={styles.texts}>{mod}</label>} /></div>))
+      return pistol.textures.map((mod, i) => (<div><Checkbox onClick={() => this.handleTextures(p.textures[i])} label={<label style={styles.texts}>{mod}</label>} /></div>))
     }
   }
 
