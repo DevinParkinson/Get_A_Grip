@@ -34,14 +34,35 @@ class Api::PistolsController < ApplicationController
     end
   end
 
-  def update_modifications
+  def update_mods
     current_user.my_order << params[:id]
+    current_user.save
+    render json: current_user
+  end
+
+  def update_textures
+    current_user.textures << params[:id]
+    current_user.save
+    render json: current_user
+  end
+
+  def update_cerakote
+    current_user.cerakote << params[:id]
+    current_user.save
+    render json: current_user
+  end
+
+  def update_price
+    current_user.price << params[:id]
     current_user.save
     render json: current_user
   end
 
   def my_order
     render json: Pistol.get_order(current_user)
+    render json: Pistol.get_textures(current_user)
+    render json: Pistol.get_cerakote(current_user)
+    render json: Pistol.get_price(current_user)
   end
 
   def destroy
