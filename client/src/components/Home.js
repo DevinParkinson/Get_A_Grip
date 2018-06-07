@@ -59,7 +59,7 @@ class Home extends React.Component {
             <Grid.Row columns={2}>
               <Grid.Column
                 computer={8}
-                mobile={12}
+                mobile={16}
                 tablet={8}
               >
               <Dimmer.Dimmable
@@ -70,8 +70,8 @@ class Home extends React.Component {
                 onMouseLeave={this.handleShow4}
                 >
                 <Dimmer active={active4}>
-                  <Header style={styles.text} as='h3'>Grips</Header>
-                  <Header style={styles.text} as='h5'>Grip determines the actual grip of the gun.</Header>
+                  <Header style={styles.text} as='h3' centered>Grips</Header>
+                  <Header style={styles.text} as='h5' centered>Grip determines the actual grip of the gun.</Header>
                 </Dimmer>
                 <Header as='h2'>Grips</Header>
                 <StyledImage src={Grip} />
@@ -80,7 +80,7 @@ class Home extends React.Component {
             </Grid.Column>
               <Grid.Column
                 computer={8}
-                mobile={12}
+                mobile={16}
                 tablet={8}
               >
               <Dimmer.Dimmable as={Card} dimmed={active1} centered onMouseEnter={this.handleShow} onMouseLeave={this.handleShow}>
@@ -98,7 +98,7 @@ class Home extends React.Component {
             </Grid.Column>
             <Grid.Column
               computer={8}
-              mobile={12}
+              mobile={16}
               tablet={8}
             >
             <Dimmer.Dimmable
@@ -118,7 +118,7 @@ class Home extends React.Component {
           </Grid.Column>
           <Grid.Column
             computer={8}
-            mobile={12}
+            mobile={16}
             tablet={8}
           >
             <Dimmer.Dimmable
