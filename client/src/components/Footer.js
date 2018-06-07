@@ -35,8 +35,8 @@ class Footer extends Component{
                   Follow us here!
                 </Header>
                 <Header textAlign="center" style={{color: '#ffffff'}}>
-                  <Link to="https://www.facebook.com/getstipplegrip/?ref=br_rs" target="_blank"><Icon name='facebook square' size='large' /></Link>
-                  <Link to="https://www.instagram.com/getagrip_customs/" target="_blank" ><Icon name='instagram' size='large' /></Link>
+                  <Link to="https://www.facebook.com/getstipplegrip/?ref=br_rs" rel='noopener noreferrer' target="_blank"><Icon name='facebook square' size='large' /></Link>
+                  <Link to="https://www.instagram.com/getagrip_customs/" rel='noopener noreferrer' target="_blank" ><Icon name='instagram' size='large' /></Link>
                 </Header>
               </Grid.Column>
             </Grid.Row>

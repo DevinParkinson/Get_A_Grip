@@ -24,8 +24,8 @@ const StyledImage = styled(Image)`
   align-items: center !important;
   justify-content: center !important;
   display: flex !important;
-  height: 25vh !important;
-  width: 50vh !important;
+  height: auto !important;
+  width: auto !important;
 `
 
 class Home extends React.Component {
@@ -74,7 +74,7 @@ class Home extends React.Component {
                   <Header style={styles.text} as='h5' centered>Grip determines the actual grip of the gun.</Header>
                 </Dimmer>
                 <Header as='h2'>Grips</Header>
-                <StyledImage src={Grip} />
+                <StyledImage src={Grip} alt='Grip' />
               </Dimmer.Dimmable>
               <Divider hidden />
             </Grid.Column>
@@ -92,7 +92,7 @@ class Home extends React.Component {
                   <ul>Frame</ul>
                 </Dimmer>
                 <Header as='h2'>Frameworks</Header>
-                <StyledImage src={Framework} />
+                <StyledImage src={Framework} atl='Framework' />
               </Dimmer.Dimmable>
               <Divider hidden />
             </Grid.Column>
@@ -112,7 +112,7 @@ class Home extends React.Component {
                 <Header style={styles.text} as='h3'>Slidework is the work that is done on the slide of the pistol</Header>
               </Dimmer>
               <Header as='h2'>Slidework</Header>
-              <StyledImage src={Slides} />
+              <StyledImage src={Slides} alt='Slidework' />
             </Dimmer.Dimmable>
             <Divider hidden />
           </Grid.Column>
@@ -161,12 +161,6 @@ const styles = {
   text: {
     color: "white",
     textAlign: "center",
-  },
-  middleContainer: {
-    height:'fill',
-    background: 'transparent',
-    width: 'fluid',
-    color: "black",
   },
 }
 
