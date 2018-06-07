@@ -17,7 +17,7 @@ const AppContainer = styled.div`
 `
 
 class CustomizePistol extends React.Component {
-  state = { pistols: [], my_pistol: [], redirect: false, my_order: [] }
+  state = { pistols: [], my_pistol: [], redirect: false, my_order: [], textures: [], cerakote: [], price: [] }
 
   componentDidMount = () => {
     const { dispatch } = this.props;
@@ -50,6 +50,24 @@ class CustomizePistol extends React.Component {
     .then( res => {
       dispatch(setHeaders(res.headers))
       this.setState({ my_order: res.data })
+    })
+  }
+
+  handleTextures = (id) => {
+    const {dispatch} = this.props;
+    axios.put(`/api/textures/`)
+    .then( res => {
+      dispatch(setHeaders(res.headers))
+      this.setState({ textures: res.data })
+    })
+  }
+
+  handleCerakote = (id) => {
+    const {dispatch} = this.props;
+    axios.put(`/api/cerakote/`)
+    .then( res => {
+      dispatch(setHeaders(res.headers))
+      this.setState({ cerakote: res.data })
     })
   }
 
@@ -91,7 +109,6 @@ class CustomizePistol extends React.Component {
         my_pistol.map( p =>
         <AppContainer>
           <Header as="h2" key={p.id} style={styles.text}>
-              The Gun that you have chosen is: {p.make} | {p.pistol_model} | {p.gen}
           </Header>
           <Grid columns={2} rows="equal">
             <Grid.Column>
@@ -123,8 +140,10 @@ class CustomizePistol extends React.Component {
             </Grid.Column>
               {my_order.map( order =>
                 <Grid.Column>
-                  <Header as='h3' style={styles.rtexts}>Your Order</Header>
-                <Header as='h5' key={order.id} style={styles.texts}>{order.all}</Header>
+                  <Header as='h3' style={styles.rtexts}>The Gun that you have chosen is: {p.make} | {p.pistol_model} | {p.gen}</Header>
+                  <Header as='h5' key={order.id} style={styles.texts}>{order.all}</Header>
+                  <Divider hidden />
+                  <Header as='h3' style={styles.rtexts}>The price of your order is: {p.price}</Header>
             </Grid.Column>
           )}
             {this.redirectMe()}

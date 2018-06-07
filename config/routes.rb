@@ -6,9 +6,9 @@ Rails.application.routes.draw do
     put 'pistol/:id', to: 'pistols#update_pistol'
     get 'my_order', to: 'pistols#my_order'
     put 'my_order', to: 'pistols#update_mods'
-    put 'my_order', to: 'pistols#update_textures'
-    put 'my_order', to: 'pistols#update_cerakote'
-    put 'my_order', to: 'pistols#update_price'
+    put 'textures', to: 'pistols#update_textures'
+    put 'cerakote', to: 'pistols#update_cerakote'
+    put 'price', to: 'pistols#update_price'
   end
 
   #Do not place any routes below this one

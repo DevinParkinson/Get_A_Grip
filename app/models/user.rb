@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   serialize :my_order, Array
   serialize :textures, Array
   serialize :cerakote, Array
+  serialize :price, Array
 
   def self.mine(ids)
     ids = ids.empty? ? [0] : ids

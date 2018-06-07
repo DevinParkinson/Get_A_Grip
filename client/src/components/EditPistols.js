@@ -1,6 +1,5 @@
 import React from 'react';
 import EditPistolForm from './EditPistolForm';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getPistols } from '../actions/pistols';
@@ -93,13 +92,6 @@ class EditPistols extends React.Component {
         }
       </Segment>
     )
-  }
-}
-
-
-var styles = {
-  text: {
-    color: 'white'
   }
 }
 
