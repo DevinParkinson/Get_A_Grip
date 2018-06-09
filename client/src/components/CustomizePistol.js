@@ -141,7 +141,7 @@ class CustomizePistol extends React.Component {
               {my_order.map( order =>
                 <Grid.Column>
                   <Header as='h3' style={styles.rtexts}>The Gun that you have chosen is: {p.make} | {p.pistol_model} | {p.gen}</Header>
-                  <Header as='h5' key={order.id} style={styles.texts}>{order.all}</Header>
+                  <Header as='h5' key={order.id} style={styles.texts}>{order.modifications}</Header>
                   <Divider hidden />
                   <Header as='h3' style={styles.rtexts}>The price of your order is: {p.price}</Header>
             </Grid.Column>
