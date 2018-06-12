@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Image, Container, Divider, Grid, Dimmer, Card } from 'semantic-ui-react';
+import { Header, Image, Container, Divider, Grid, Dimmer, Segment, Accordian } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import LandImage from '../images/LandImage.jpg';
 import Framework from '../images/Frame.jpg';
@@ -15,17 +15,12 @@ const AppContainer = styled.div`
   width: 100%;
 `
 const GridMain = styled.div`
-  width: 100%
-  height: 100%
-  text-align: center
-  align-self: center
+  width: fluid;
 `
 const StyledImage = styled(Image)`
-  align-items: center !important;
-  justify-content: center !important;
-  display: flex !important;
+  display: block !important;
   height: auto !important;
-  width: auto !important;
+  width: fluid !important;
 `
 
 class Home extends React.Component {
@@ -53,19 +48,14 @@ class Home extends React.Component {
         </Container>
         <Divider hidden />
         <Divider hidden />
-        <Container style={styles.middleContainer}>
+        <Container fluid>
           <GridMain>
           <Grid>
-            <Grid.Row columns={2}>
-              <Grid.Column
-                computer={8}
-                mobile={16}
-                tablet={8}
-              >
+            <Grid.Row>
               <Dimmer.Dimmable
-                as={Card}
+                as={Segment}
                 dimmed={active4}
-                centered
+                inverted
                 onMouseEnter={this.handleShow4}
                 onMouseLeave={this.handleShow4}
                 >
@@ -73,17 +63,16 @@ class Home extends React.Component {
                   <Header style={styles.text} as='h3' centered>Grips</Header>
                   <Header style={styles.text} as='h5' centered>Grip determines the actual grip of the gun.</Header>
                 </Dimmer>
-                <Header as='h2'>Grips</Header>
                 <StyledImage src={Grip} alt='Grip' />
               </Dimmer.Dimmable>
-              <Divider hidden />
-            </Grid.Column>
-              <Grid.Column
-                computer={8}
-                mobile={16}
-                tablet={8}
-              >
-              <Dimmer.Dimmable as={Card} dimmed={active1} centered onMouseEnter={this.handleShow} onMouseLeave={this.handleShow}>
+            </Grid.Row>
+            <Grid.Row fluid >
+              <Dimmer.Dimmable
+                as={Segment}
+                dimmed={active1}
+                inverted
+                onMouseEnter={this.handleShow}
+                onMouseLeave={this.handleShow}>
                 <Dimmer active={active1}>
                   <Header style={styles.text} as='h3'>Framework is the work that is done on the frame of the pistol</Header>
                   <Header style={styles.text} as='h5'>Here are a couple of the different styles you can choose from:</Header>
@@ -95,47 +84,38 @@ class Home extends React.Component {
                 <StyledImage src={Framework} atl='Framework' />
               </Dimmer.Dimmable>
               <Divider hidden />
-            </Grid.Column>
-            <Grid.Column
-              computer={8}
-              mobile={16}
-              tablet={8}
-            >
-            <Dimmer.Dimmable
-              as={Card}
-              dimmed={active2}
-              centered
-              onMouseEnter={this.handleShow2}
-              onMouseLeave={this.handleShow2}
-              >
-              <Dimmer active={active2}>
-                <Header style={styles.text} as='h3'>Slidework is the work that is done on the slide of the pistol</Header>
-              </Dimmer>
-              <Header as='h2'>Slidework</Header>
-              <StyledImage src={Slides} alt='Slidework' />
-            </Dimmer.Dimmable>
-            <Divider hidden />
-          </Grid.Column>
-          <Grid.Column
-            computer={8}
-            mobile={16}
-            tablet={8}
-          >
-            <Dimmer.Dimmable
-              as={Card}
-              dimmed={active3}
-              centered
-              onMouseEnter={this.handleShow3}
-              onMouseLeave={this.handleShow3}
-              >
-              <Dimmer active={active3} onClickOutside={this.handleShow3}>
-                <Header style={styles.text} as='h3'>Cerakote is the type of paint on the pistol</Header>
-              </Dimmer>
+            </Grid.Row>
+            <Grid.Row fluid>
+              <Dimmer.Dimmable
+                as={Segment}
+                dimmed={active2}
+                inverted
+                onMouseEnter={this.handleShow2}
+                onMouseLeave={this.handleShow2}
+                >
+                <Dimmer active={active2}>
+                  <Header style={styles.text} as='h3'>Slidework is the work that is done on the slide of the pistol</Header>
+                </Dimmer>
+                <Header as='h2'>Slidework</Header>
+                <StyledImage src={Slides} alt='Slidework' />
+              </Dimmer.Dimmable>
+              <Divider hidden />
+            </Grid.Row>
+            <Grid.Row fluid>
+              <Dimmer.Dimmable
+                as={Segment}
+                dimmed={active3}
+                inverted
+                onMouseEnter={this.handleShow3}
+                onMouseLeave={this.handleShow3}
+                >
+                <Dimmer active={active3} onClickOutside={this.handleShow3}>
+                  <Header style={styles.text} as='h3'>Cerakote is the type of paint on the pistol</Header>
+                </Dimmer>
                 <Header as='h2'>Cerakote</Header>
                   <StyledImage src={Cerakote} />
                 </Dimmer.Dimmable>
                 <Divider hidden />
-              </Grid.Column>
             </Grid.Row>
           </Grid>
         </GridMain>

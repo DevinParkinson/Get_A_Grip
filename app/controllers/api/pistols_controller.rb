@@ -59,10 +59,8 @@ class Api::PistolsController < ApplicationController
   end
 
   def my_order
-    render json: Pistol.get_order(current_user)
-    # render json: Pistol.get_textures(current_user)
-    # render json: Pistol.get_cerakote(current_user)
-    # render json: Pistol.get_price(current_user)
+    render json: User.get_order(current_user)
+    current_user.save
   end
 
   def destroy

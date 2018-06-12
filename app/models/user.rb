@@ -18,4 +18,11 @@ class User < ActiveRecord::Base
     Pistol.where("id IN (?)", ids)
   end
 
+  def self.get_order(current_user)
+    Pistol.find_by_sql("
+      SELECT my_order
+      WHERE User.id = #{current_user.id}
+      ")
+  end
+
 end
