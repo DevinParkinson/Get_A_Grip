@@ -69,7 +69,7 @@ class NavBar extends Component {
                     </Dropdown>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Dropdown text='Holders (coming soon)' disabled>
+                    <Dropdown text='Holsters (coming soon)' disabled>
                       <Dropdown.Menu>
                         <Dropdown.Item>
                           Under Construction
