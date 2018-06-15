@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Image, Container, Divider, Grid, Dimmer, Segment, Accordian } from 'semantic-ui-react';
+import { Header, Image, Container, Divider, Grid, Dimmer, Segment, Button} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import LandImage from '../images/LandImage.jpg';
 import Framework from '../images/Frame.jpg';
@@ -14,9 +14,6 @@ const AppContainer = styled.div`
   background-attachment: fixed;
   width: 100%;
 `
-const GridMain = styled.div`
-  width: fluid;
-`
 const StyledImage = styled(Image)`
   display: block !important;
   height: auto !important;
@@ -24,16 +21,14 @@ const StyledImage = styled(Image)`
 `
 
 class Home extends React.Component {
-  state = { active1: false, active2: false, active3: false, active4: false}
+  state = {}
 
-  handleShow = () => this.setState({ active1: !this.state.active1 })
-  handleShow2 = () => this.setState({ active2: !this.state.active2 })
-  handleShow3 = () => this.setState({ active3: !this.state.active3 })
-  handleShow4 = () => this.setState({ active4: !this.state.active4 })
-
+  handleShowFrame = () => this.setState({ active: true })
+  handleHideFrame = () => this.setState({ active: false })
 
   render() {
-    const { active1, active2, active3, active4 } = this.state;
+    const { active } = this.state
+
     return (
       <AppContainer>
         <Header as='h1' style={styles.text}>Kings Peak Customs</Header>
@@ -41,86 +36,60 @@ class Home extends React.Component {
           <Image src={LandImage} alt='Logo' />
         </Container>
         <Divider />
-        <Container style={styles.middleContainer}>
+        <Container>
           <Header as='h3' style={styles.text}>Kings Peak Customs is Dedicated to providing you with the highest standard of customized Grips, Frameworks, and Slideworks.</Header>
           <Header as='h5' style={styles.text}>We custom make every pistol so that yours is not only unique, but build just the way that you want.</Header>
           <Header as='h5' style={styles.text}>We have several different builds that we <Link to='/gallery' rel='noopener noreferrer'>really enjoy</Link>, or if you want you can start your custom build <Link to='/pistol' rel='noopener noreferrer'>right here</Link> by selecting what pistol you would like to customize!</Header>
         </Container>
         <Divider hidden />
         <Divider hidden />
-        <Container fluid>
-          <GridMain>
-          <Grid>
-            <Grid.Row>
-              <Dimmer.Dimmable
-                as={Segment}
-                dimmed={active4}
-                inverted
-                onMouseEnter={this.handleShow4}
-                onMouseLeave={this.handleShow4}
-                >
-                <Dimmer active={active4}>
-                  <Header style={styles.text} as='h3' centered>Grips</Header>
-                  <Header style={styles.text} as='h5' centered>Grip determines the actual grip of the gun.</Header>
-                </Dimmer>
-                <StyledImage src={Grip} alt='Grip' />
-              </Dimmer.Dimmable>
-            </Grid.Row>
-            <Grid.Row fluid >
-              <Dimmer.Dimmable
-                as={Segment}
-                dimmed={active1}
-                inverted
-                onMouseEnter={this.handleShow}
-                onMouseLeave={this.handleShow}>
-                <Dimmer active={active1}>
-                  <Header style={styles.text} as='h3'>Framework is the work that is done on the frame of the pistol</Header>
-                  <Header style={styles.text} as='h5'>Here are a couple of the different styles you can choose from:</Header>
-                  <ul>Operator</ul>
-                  <ul>Defender</ul>
-                  <ul>Frame</ul>
-                </Dimmer>
-                <Header as='h2'>Frameworks</Header>
-                <StyledImage src={Framework} atl='Framework' />
-              </Dimmer.Dimmable>
-              <Divider hidden />
-            </Grid.Row>
-            <Grid.Row fluid>
-              <Dimmer.Dimmable
-                as={Segment}
-                dimmed={active2}
-                inverted
-                onMouseEnter={this.handleShow2}
-                onMouseLeave={this.handleShow2}
-                >
-                <Dimmer active={active2}>
-                  <Header style={styles.text} as='h3'>Slidework is the work that is done on the slide of the pistol</Header>
-                </Dimmer>
-                <Header as='h2'>Slidework</Header>
-                <StyledImage src={Slides} alt='Slidework' />
-              </Dimmer.Dimmable>
-              <Divider hidden />
-            </Grid.Row>
-            <Grid.Row fluid>
-              <Dimmer.Dimmable
-                as={Segment}
-                dimmed={active3}
-                inverted
-                onMouseEnter={this.handleShow3}
-                onMouseLeave={this.handleShow3}
-                >
-                <Dimmer active={active3} onClickOutside={this.handleShow3}>
-                  <Header style={styles.text} as='h3'>Cerakote is the type of paint on the pistol</Header>
-                </Dimmer>
-                <Header as='h2'>Cerakote</Header>
-                  <StyledImage src={Cerakote} />
-                </Dimmer.Dimmable>
-                <Divider hidden />
-            </Grid.Row>
-          </Grid>
-        </GridMain>
-        <Divider hidden />
-        </Container>
+        <Dimmer.Dimmable as={Segment} dimmed={active} style={styles.backFrame}>
+          <Divider hidden />
+          <Header as='h1' inverted>Frameworks</Header>
+            <Divider hidden />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <Dimmer active={active}>
+              <Header as='h2' inverted>
+                There are two different kinds of Frameworks.
+              </Header>
+              <Header as='h5' inverted>Operator</Header>
+              <Header as='h5' inverted>Defender</Header>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <Button inverted size="large" onClick={this.handleHideFrame}>Hide Frameworks</Button>
+            </Dimmer>
+          <Button inverted size='large' onClick={this.handleShowFrame}>See Frameworks</Button>
+        </Dimmer.Dimmable>
         <Container>
           <Header as="h1" style={styles.text}>Pricing</Header>
           <Header as="h3" style={styles.text}>We like to keep it clean cut, affordable, and simple here. Pricing is based on the size of the pistol.</Header>
@@ -142,6 +111,13 @@ const styles = {
     color: "white",
     textAlign: "center",
   },
+  backFrame: {
+    backgroundImage: `url(${Framework})`,
+    height: "90vh",
+    width: "100%",
+    textAlign: "center",
+    backgroundSize: "cover",
+  }
 }
 
 export default Home;

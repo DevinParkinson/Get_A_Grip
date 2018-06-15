@@ -10,7 +10,8 @@ const NavContainer = styled.div`
   background-image: url("http://www.copiaguechamber.org/wp-content/uploads/2017/09/background-dark-metal.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  display: block
+  display: block;
+  height: auto;
 `
 
 const LogoImage = styled(Image)`
@@ -24,12 +25,11 @@ class NavBar extends Component {
 
     if (user.id) {
       return (
-        <Menu.Menu position='right'>
+        <Menu.Menu>
           { user.role === 'admin' &&
-            <Menu.Item onClick={ () => history.push( '/edit' ) } style={styles.text}>Edit Menu</Menu.Item>
+            <Menu.Item onClick={ () => history.push( '/edit' ) }>Edit Menu</Menu.Item>
           }
           <Menu.Item
-            style={styles.text}
             name='Logout'
             onClick={() => dispatch(handleLogout(history))}
           />
@@ -39,10 +39,10 @@ class NavBar extends Component {
     return (
       <Menu.Menu position='right'>
         <Link to='/register' rel='noopener noreferrer'>
-          <Menu.Item name='Register' style={styles.text} />
+          <Menu.Item name='Register' />
         </Link>
         <Link to='/login' rel='noopener noreferrer'>
-          <Menu.Item name='Login' style={styles.text} />
+          <Menu.Item name='Login' />
         </Link>
       </Menu.Menu>
     );
@@ -50,48 +50,46 @@ class NavBar extends Component {
 
   render() {
     return (
-      <NavContainer fluid>
-        <Menu secondary>
-          <Menu.Menu position='left'>
-            <Menu.Item>
-              <Dropdown text='Menu' style={styles.text}>
-                <Dropdown.Menu>
-                  <Dropdown.Item>
-                    <Dropdown text='Pistols'>
-                      <Dropdown.Menu>
-                        <Link to='/pistol' rel='noopener noreferrer'>
-                          <Dropdown.Item>Choose Your Pistol</Dropdown.Item>
-                        </Link>
-                        <Link to='/customize-pistol' rel='noopener noreferrer'>
-                          <Dropdown.Item>Customize Your Pistol</Dropdown.Item>
-                        </Link>
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  </Dropdown.Item>
-                  <Dropdown.Item>
-                    <Dropdown text='Holsters (coming soon)' disabled>
-                      <Dropdown.Menu>
-                        <Dropdown.Item>
-                          Under Construction
-                        </Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  </Dropdown.Item>
-                    <Link to='/dealer' rel='noopener noreferrer'>
-                      <Dropdown.Item>
-                          Become A Dealer?
-                      </Dropdown.Item>
-                    </Link>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Menu.Item>
+      <NavContainer>
+        <Menu compact inverted vertical>
+          <Menu.Menu>
+            <a href='/' rel='noopener noreferrer'>
+              <LogoImage src={Logo} alt="Logo" />
+            </a>
           </Menu.Menu>
           <Menu.Menu>
-            <Menu.Item>
-              <a href='/' rel='noopener noreferrer'>
-                <LogoImage src={Logo} alt="Logo" />
-              </a>
-            </Menu.Item>
+              <Menu.Item>
+                <Dropdown text='Menu'>
+                  <Dropdown.Menu>
+                    <Dropdown.Item>
+                      <Dropdown text='Pistols'>
+                        <Dropdown.Menu>
+                          <Link to='/pistol' rel='noopener noreferrer'>
+                            <Dropdown.Item style={styles.text}>Choose Your Pistol</Dropdown.Item>
+                          </Link>
+                          <Link to='/customize-pistol' rel='noopener noreferrer'>
+                            <Dropdown.Item style={styles.text}>Customize Your Pistol</Dropdown.Item>
+                          </Link>
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Dropdown text='Holsters (coming soon)' disabled>
+                        <Dropdown.Menu>
+                          <Dropdown.Item>
+                            Under Construction
+                          </Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    </Dropdown.Item>
+                      <Link to='/dealer' rel='noopener noreferrer'>
+                        <Dropdown.Item style={styles.text}>
+                            Become A Dealer?
+                        </Dropdown.Item>
+                      </Link>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Menu.Item>
           </Menu.Menu>
           { this.rightNavs() }
         </Menu>
@@ -102,7 +100,7 @@ class NavBar extends Component {
 
 const styles = {
   text: {
-    color: "white",
+    color: "#000000",
   },
 }
 
