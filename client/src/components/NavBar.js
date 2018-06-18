@@ -51,7 +51,7 @@ class NavBar extends Component {
   render() {
     return (
       <NavContainer>
-        <Menu compact inverted vertical>
+        <Menu inverted>
           <Menu.Menu>
             <a href='/' rel='noopener noreferrer'>
               <LogoImage src={Logo} alt="Logo" />
